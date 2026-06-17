@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 წლის ფეხბურთის შიდა ჩემპიონატი</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF6B00;
+    --orange-dark: #E05500;
+    --orange-light: #FF8C33;
+    --blue: #1E6FD9;
+    --blue-dark: #1557B0;
+    --white: #FFFFFF;
+    --off-white: #FFF8F2;
+    --teal: #4ECDC4;
+    --dark: #1A1A2E;
+    --gray: #F5F5F5;
+    --text-dark: #1A1A2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans Georgian', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  .hero {
+    background: var(--orange);
+    background-image: radial-gradient(ellipse at top right, #FF9A3C 0%, #FF6B00 40%, #E05500 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    padding: 48px 24px 40px;
+  }
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .brand-logo svg { width: 36px; height: 36px; }
+  .brand-name {
+    font-size: 22px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(26px, 5vw, 48px);
+    font-weight: 900;
+    color: white;
+    text-shadow: 3px 3px 0 var(--blue-dark), 0 0 40px rgba(0,0,0,0.3);
+    line-height: 1.1;
+    -webkit-text-stroke: 1px rgba(0,0,0,0.15);
+  }
+  .hero-subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    background: rgba(30,111,217,0.7);
+    display: inline-block;
+    padding: 5px 18px;
+    border-radius: 20px;
+  }
+  .hero-balls {
+    position: absolute;
+    font-size: 80px;
+    opacity: 0.08;
+    top: 10px; left: 20px;
+    user-select: none;
+  }
+  .hero-balls2 {
+    position: absolute;
+    font-size: 60px;
+    opacity: 0.06;
+    bottom: 5px; right: 30px;
+    user-select: none;
+  }
+
+  .tab-bar {
+    background: var(--blue);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    padding: 14px 22px;
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Noto Sans Georgian', sans-serif;
+    cursor: pointer;
+    border: none;
+    background: none;
+    white-space: nowrap;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+  .tab-btn:hover { color: white; background: rgba(255,255,255,0.1); }
+  .tab-btn.active {
+    color: white;
+    border-bottom: 3px solid var(--orange);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .section { display: none; padding: 24px 16px 40px; max-width: 1000px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 5px solid var(--orange);
+    padding-left: 12px;
+  }
+
+  .groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .group-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(255,107,0,0.1);
+    border: 2px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .group-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,107,0,0.2); }
+  .group-header {
+    background: var(--orange);
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .group-header.blue { background: var(--blue); }
+  .group-header.teal { background: #0891B2; }
+  .group-label {
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+  }
+  .group-region {
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    background: rgba(0,0,0,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .team-list { padding: 8px 0; }
+  .team-item {
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.15s;
+  }
+  .team-item:last-child { border-bottom: none; }
+  .team-item:hover { background: #FFF8F2; }
+  .team-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .team-num.blue { background: var(--blue); }
+  .team-num.teal { background: #0891B2; }
+  .team-info { flex: 1; }
+  .team-name-main { font-size: 14px; font-weight: 700; color: var(--dark); }
+  .team-dept { font-size: 11px; color: #888; margin-top: 2px; }
+
+  .schedule-group { margin-bottom: 28px; }
+  .date-header {
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px 10px 0 0;
+    font-weight: 800;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .date-badge {
+    background: rgba(255,255,255,0.25);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+  }
+  .match-row {
+    background: white;
+    border-left: 4px solid var(--orange);
+    border-bottom: 1px solid #f0f0f0;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.15s;
+  }
+  .match-row:hover { background: #FFF8F2; }
+  .match-row:last-child { border-radius: 0 0 10px 10px; border-bottom: none; }
+  .match-row.group-b { border-left-color: var(--blue); }
+  .match-row.group-c { border-left-color: #0891B2; }
+  .match-row.special { border-left-color: #F59E0B; background: #FFFBEB; }
+  .match-time {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--orange);
+    min-width: 55px;
+  }
+  .match-time.blue { color: var(--blue); }
+  .match-time.teal { color: #0891B2; }
+  .match-time.gold { color: #D97706; }
+  .match-vs {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .match-team {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .match-branch {
+    font-size: 10px;
+    font-weight: 500;
+    color: #aaa;
+    margin-left: 2px;
+  }
+  .vs-badge {
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 7px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .vs-badge.blue { background: var(--blue); }
+  .vs-badge.gold { background: #D97706; }
+  .match-meta {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: #F3F4F6;
+    color: #555;
+  }
+  .tag.orange { background: #FFF0E5; color: var(--orange); }
+  .tag.blue { background: #EFF6FF; color: var(--blue); }
+  .tag.teal { background: #E0F7FA; color: #0891B2; }
+  .tag.gold { background: #FFFBEB; color: #D97706; }
+
+  .players-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  table { width: 100%; border-collapse: collapse; background: white; font-size: 13px; }
+  thead tr { background: var(--orange); color: white; }
+  thead th { padding: 12px 14px; text-align: left; font-weight: 700; white-space: nowrap; font-size: 12px; }
+  tbody tr { border-bottom: 1px solid #f0f0f0; transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #FFF8F2; }
+  tbody td { padding: 11px 14px; vertical-align: middle; }
+  .team-badge {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    background: var(--orange);
+    color: white;
+    white-space: nowrap;
+  }
+  .team-badge.blue { background: var(--blue); }
+  .team-badge.teal { background: #0891B2; }
+  .captain-badge {
+    font-size: 10px;
+    background: #FFF0E5;
+    color: var(--orange);
+    border: 1px solid var(--orange);
+    padding: 2px 7px;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+  .player-pill {
+    display: inline-block;
+    font-size: 11px;
+    background: #F3F4F6;
+    color: #444;
+    padding: 2px 8px;
+    border-radius: 8px;
+    margin: 1px;
+    white-space: nowrap;
+  }
+  .goal-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #FFF0E5;
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 800;
+  }
+  td.goal-count-cell { text-align: center; }
+
+  .knockout-bracket {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .bracket-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--blue);
+    margin-bottom: 16px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .bracket-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .bracket-match {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 200px;
+    max-width: 260px;
+    flex: 1;
+    transition: box-shadow 0.2s;
+  }
+  .bracket-match:hover { box-shadow: 0 4px 16px rgba(255,107,0,0.2); border-color: var(--orange); }
+  .bracket-match-header {
+    background: var(--blue);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .bracket-match-header.orange { background: var(--orange); }
+  .bracket-match-header.gold { background: #D97706; }
+  .bracket-team {
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 13px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .bracket-team:last-child { border-bottom: none; }
+  .bracket-team span { color: #888; font-size: 11px; font-weight: 600; }
+  .bracket-meta {
+    padding: 6px 14px;
+    font-size: 11px;
+    color: #777;
+    background: #F9FAFB;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #DDD;
+    padding: 0 4px;
+  }
+  .trophy { font-size: 48px; text-align: center; margin: 12px 0; }
+  .final-note {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  .stats-strip {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    flex: 1;
+    min-width: 100px;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--orange);
+  }
+  .stat-card.blue { border-top-color: var(--blue); }
+  .stat-card.teal { border-top-color: #0891B2; }
+  .stat-card.gold { border-top-color: #D97706; }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--orange); line-height: 1; }
+  .stat-num.blue { color: var(--blue); }
+  .stat-num.teal { color: #0891B2; }
+  .stat-num.gold { color: #D97706; }
+  .stat-label { font-size: 11px; color: #888; font-weight: 600; margin-top: 4px; }
+
+  footer {
+    background: var(--orange);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 40px;
+  }
+  footer span { opacity: 0.8; }
+
+  .player-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .player-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+  .pc-header {
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .pc-header.orange { background: var(--orange); }
+  .pc-header.blue { background: var(--blue); }
+  .pc-header.teal { background: #0891B2; }
+  .pc-team {
+    font-size: 16px;
+    font-weight: 900;
+    color: white;
+  }
+  .pc-dept {
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .pc-body { padding: 4px 0; }
+  .pc-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 18px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .pc-row:last-child { border-bottom: none; }
+  .pc-role {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 8px;
+    min-width: 38px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+  .pc-role.cap { background: #FFF0E5; color: var(--orange); border: 1px solid #FFCBA4; }
+  .pc-role.gk  { background: #EFF6FF; color: var(--blue);   border: 1px solid #BFDBFE; }
+  .pc-role.pl  { background: #F0FDF4; color: #16A34A;       border: 1px solid #BBF7D0; }
+  .pc-role.sub { background: #F9FAFB; color: #6B7280;       border: 1px solid #E5E7EB; }
+  .pc-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+  .pc-players { display: flex; flex-wrap: wrap; gap: 4px; }
+  .player-pill.sub { background: #F3F4F6; color: #6B7280; }
+
+  @media (max-width: 600px) {
+    .match-meta { display: none; }
+    .hero-title { font-size: 22px; }
+    .groups-grid { grid-template-columns: 1fr; }
+    .pc-dept { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-balls">⚽</div>
+  <div class="hero-balls2">⚽</div>
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="3"/>
+        <path d="M30 35 Q50 20 70 35 Q80 50 70 65 Q50 80 30 65 Q20 50 30 35Z" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="2"/>
+        <path d="M40 42 L60 42 M50 32 L50 68 M35 55 L65 55" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name">ზუმერი</span>
+    </div>
+    <div class="hero-title">2026 წლის ფეხბურთის<br>შიდა ჩემპიონატი</div>
+    <div class="hero-subtitle">⚽ ივნისი – ივლისი 2026 &nbsp;|&nbsp; 3 ჯგუფი &nbsp;|&nbsp; 13 გუნდი</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('groups', this)">🏆 ჯგუფები</button>
+  <button class="tab-btn" onclick="showTab('schedule', this)">📅 განრიგი</button>
+  <button class="tab-btn" onclick="showTab('knockout', this)">⚔️ პლეი-ოფი</button>
+  <button class="tab-btn" onclick="showTab('players', this)">👥 მოთამაშეები</button>
+  <button class="tab-btn" onclick="showTab('standings', this)">📊 ქულათა ცხრილი</button>
+  <button class="tab-btn" onclick="showTab('scorers', this)">🥅 გოლების სტატისტიკა</button>
+</div>
+
+<!-- GROUPS TAB -->
+<div id="tab-groups" class="section active">
+  <div class="stats-strip">
+    <div class="stat-card"><div class="stat-num">13</div><div class="stat-label">გუნდი</div></div>
+    <div class="stat-card blue"><div class="stat-num blue">3</div><div class="stat-label">ჯგუფი</div></div>
+    <div class="stat-card teal"><div class="stat-num teal">22+</div><div class="stat-label">თამაში</div></div>
+    <div class="stat-card gold"><div class="stat-num gold">2026</div><div class="stat-label">წელი</div></div>
+  </div>
+
+  <h2 class="section-title">⚽ ჯგუფების შემადგენლობა</h2>
+  <div class="groups-grid">
+
+    <!-- GROUP A -->
+    <div class="group-card">
+      <div class="group-header">
+        <span class="group-label">ჯგუფი A</span>
+        <span class="group-region">🌏 აღმოსავლეთი • 5 გუნდი</span>
+      </div>
+      <div class="team-list">
+        <div class="team-item">
+          <div class="team-num">A1</div>
+          <div class="team-info">
+            <div class="team-name-main">ონლაინი</div>
+            <div class="team-dept">ადმინისტრაცია • საბითუმო ოფისი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num">A2</div>
+          <div class="team-info">
+            <div class="team-name-main">ბოლო სეზონი</div>
+            <div class="team-dept">ფილიალი • გლდანი/ცენტრალი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num">A3</div>
+          <div class="team-info">
+            <div class="team-name-main">Phoenix</div>
+            <div class="team-dept">ფილიალი • 1 ზუმერი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num">A4</div>
+          <div class="team-info">
+            <div class="team-name-main">Blue Lock</div>
+            <div class="team-dept">ფილიალი • ისთ ფოინთი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num">A5</div>
+          <div class="team-info">
+            <div class="team-name-main">OFA</div>
+            <div class="team-dept">ადმინისტრაცია • ოფისი</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP B -->
+    <div class="group-card">
+      <div class="group-header blue">
+        <span class="group-label">ჯგუფი B</span>
+        <span class="group-region">🌏 აღმოსავლეთი • 4 გუნდი</span>
+      </div>
+      <div class="team-list">
+        <div class="team-item">
+          <div class="team-num blue">B1</div>
+          <div class="team-info">
+            <div class="team-name-main">Midnight Hummer</div>
+            <div class="team-dept">ფილიალი • სითი მოლი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num blue">B2</div>
+          <div class="team-info">
+            <div class="team-name-main">Black Stone</div>
+            <div class="team-dept">ადმინისტრაცია • საბითუმო ოფისი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num blue">B3</div>
+          <div class="team-info">
+            <div class="team-name-main">იმპულსი</div>
+            <div class="team-dept">ფილიალი • თბილისი მოლი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num blue">B4</div>
+          <div class="team-info">
+            <div class="team-name-main">QSANI</div>
+            <div class="team-dept">ადმინისტრაცია • საბითუმო ქსანი</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP C -->
+    <div class="group-card">
+      <div class="group-header teal">
+        <span class="group-label">ჯგუფი C</span>
+        <span class="group-region">🌿 დასავლეთი • 4 გუნდი</span>
+      </div>
+      <div class="team-list">
+        <div class="team-item">
+          <div class="team-num teal">C1</div>
+          <div class="team-info">
+            <div class="team-name-main">ზუმერელი BMW შნიკები</div>
+            <div class="team-dept">ფილიალი • ბათუმი გრანდ მოლი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num teal">C2</div>
+          <div class="team-info">
+            <div class="team-name-main">SHŌRI-DAN</div>
+            <div class="team-dept">ფილიალი • ბათუმი ჭავჭავაძე</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num teal">C3</div>
+          <div class="team-info">
+            <div class="team-name-main">FC 404 Team</div>
+            <div class="team-dept">ფილიალი • ზუგდიდი მოლი</div>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-num teal">C4</div>
+          <div class="team-info">
+            <div class="team-name-main">ენერჯაიზერები "2032</div>
+            <div class="team-dept">ფილიალი • ქუთაისი</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SCHEDULE TAB -->
+<div id="tab-schedule" class="section">
+  <h2 class="section-title">📅 თამაშების განრიგი — 2026</h2>
+
+  <div style="margin-bottom: 10px; font-size: 13px; font-weight: 700; color: var(--orange);">⚽ A და B ჯგუფი — თბილისი (Buckswood Stadium)</div>
+
+  <div class="schedule-group">
+    <div class="date-header">16 ივნისი, 2026 &nbsp;—&nbsp; სამშაბათი<div class="date-badge">B ჯგუფი</div></div>
+    <div class="match-row group-b">
+      <span class="match-time blue">21:30</span>
+      <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span></div>
+      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+    <div class="match-row group-b">
+      <span class="match-time blue">22:30</span>
+      <div class="match-vs"><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header">17 ივნისი, 2026 &nbsp;—&nbsp; ოთხშაბათი<div class="date-badge">A ჯგუფი</div></div>
+    <div class="match-row">
+      <span class="match-time">21:30</span>
+      <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+    <div class="match-row">
+      <span class="match-time">22:30</span>
+      <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header">18 ივნისი, 2026 &nbsp;—&nbsp; ხუთშაბათი<div class="date-badge">B ჯგუფი</div></div>
+    <div class="match-row group-b">
+      <span class="match-time blue">21:30</span>
+      <div class="match-vs"><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+    <div class="match-row group-b">
+      <span class="match-time blue">22:30</span>
+      <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span></div>
+      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header">19 ივნისი, 2026 &nbsp;—&nbsp; პარასკევი<div class="date-badge">A ჯგუფი</div></div>
+    <div class="match-row">
+      <span class="match-time">21:30</span>
+      <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+    <div class="match-row">
+      <span class="match-time">22:30</span>
+      <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header">22 ივნისი, 2026 &nbsp;—&nbsp; ორშაბათი<div class="date-badge">A ჯგუფი</div></div>
+    <div class="match-row">
+      <span class="match-time">22:00</span>
+      <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+    <div class="match-row">
+      <span class="match-time">23:00</span>
+      <div class="match-vs"><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header">29 ივნისი, 2026 &nbsp;—&nbsp; ორშაბათი<div class="date-badge">A ჯგუფი</div></div>
+    <div class="match-row">
+      <span class="match-time">21:30</span>
+      <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+    <div class="match-row">
+      <span class="match-time">22:30</span>
+      <div class="match-vs"><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header">1 ივლისი, 2026 &nbsp;—&nbsp; ოთხშაბათი<div class="date-badge">A &amp; B</div></div>
+    <div class="match-row">
+      <span class="match-time">21:30</span>
+      <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+    <div class="match-row group-b">
+      <span class="match-time blue">22:30</span>
+      <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header">2 ივლისი, 2026 &nbsp;—&nbsp; ხუთშაბათი<div class="date-badge">A &amp; B</div></div>
+    <div class="match-row group-b">
+      <span class="match-time blue">21:30</span>
+      <div class="match-vs"><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span></div>
+      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+    <div class="match-row">
+      <span class="match-time">22:30</span>
+      <div class="match-vs"><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
+      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    </div>
+  </div>
+
+  <div style="margin: 24px 0 10px; font-size: 13px; font-weight: 700; color: #0891B2;">⚽ C ჯგუფი — დასავლეთი</div>
+
+  <div class="schedule-group">
+    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);">30 ივნისი, 2026 &nbsp;—&nbsp; შაბათი<div class="date-badge">C ჯგუფი • ბათუმი</div></div>
+    <div class="match-row group-c">
+      <span class="match-time teal">22:30</span>
+      <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span></div>
+      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ბათუმი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);">3 ივლისი, 2026 &nbsp;—&nbsp; პარასკევი<div class="date-badge">C ჯგუფი • ზუგდიდი</div></div>
+    <div class="match-row group-c">
+      <span class="match-time teal">22:30</span>
+      <div class="match-vs"><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
+      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);">7 ივლისი, 2026 &nbsp;—&nbsp; შაბათი<div class="date-badge">C ჯგუფი • ზუგდიდი</div></div>
+    <div class="match-row group-c">
+      <span class="match-time teal">22:30</span>
+      <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
+      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+    </div>
+    <div class="match-row group-c">
+      <span class="match-time teal">23:30</span>
+      <div class="match-vs"><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span></div>
+      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+    </div>
+  </div>
+
+  <div class="schedule-group">
+    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);">9 ივლისი, 2026 &nbsp;—&nbsp; ხუთშაბათი<div class="date-badge">C ჯგუფი • ზუგდიდი</div></div>
+    <div class="match-row group-c">
+      <span class="match-time teal">22:30</span>
+      <div class="match-vs"><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
+      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+    </div>
+    <div class="match-row group-c">
+      <span class="match-time teal">23:30</span>
+      <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span></div>
+      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- KNOCKOUT TAB -->
+<div id="tab-knockout" class="section">
+  <h2 class="section-title">⚔️ პლეი-ოფი სქემა — 2026</h2>
+
+  <div class="knockout-bracket">
+    <div class="bracket-title">🏆 ჩემპიონატის ბოლო სტადიები</div>
+
+    <div style="text-align:center; font-size:13px; color:#888; margin-bottom:20px;">
+      A და B ჯგუფის საუკეთესო გუნდები პირდაპირ ეჯახებიან C ჯგუფის გამარჯვებულს
+    </div>
+
+    <div style="font-size:12px; font-weight:800; text-align:center; color:#888; letter-spacing:2px; margin-bottom:10px;">── მეოთხედ ფინალი ──</div>
+    <div class="bracket-row">
+      <div class="bracket-match">
+        <div class="bracket-match-header">მატჩი 1 — 6 ივლისი, 2026</div>
+        <div class="bracket-team"><span style="color:var(--orange);">◆</span> &nbsp;<span style="color:#555;">A ჯგუფი</span> &nbsp;<strong>1 ადგილზე გასული</strong></div>
+        <div class="bracket-team"><span style="color:var(--blue);">◆</span> &nbsp;<span style="color:#555;">B ჯგუფი</span> &nbsp;<strong>2 ადგილზე გასული</strong></div>
+        <div class="bracket-meta"><span>22:30</span><span>თბილისი</span></div>
+      </div>
+      <div class="connector">→</div>
+      <div class="bracket-match">
+        <div class="bracket-match-header">მატჩი 2 — 6 ივლისი, 2026</div>
+        <div class="bracket-team"><span style="color:var(--blue);">◆</span> &nbsp;<span style="color:#555;">B ჯგუფი</span> &nbsp;<strong>1 ადგილზე გასული</strong></div>
+        <div class="bracket-team"><span style="color:var(--orange);">◆</span> &nbsp;<span style="color:#555;">A ჯგუფი</span> &nbsp;<strong>2 ადგილზე გასული</strong></div>
+        <div class="bracket-meta"><span>23:30</span><span>თბილისი</span></div>
+      </div>
+    </div>
+
+    <div style="font-size:12px; font-weight:800; text-align:center; color:#888; letter-spacing:2px; margin: 16px 0 10px;">── ნახევარ ფინალი ──</div>
+    <div class="bracket-row">
+      <div class="bracket-match" style="max-width:300px;">
+        <div class="bracket-match-header orange">ნახევარ ფინალი — 8 ივლისი, 2026</div>
+        <div class="bracket-team">🥇 <span>მატჩი 1-ის</span> გამარჯვებული</div>
+        <div class="bracket-team">🥈 <span>მატჩი 2-ის</span> გამარჯვებული</div>
+        <div class="bracket-meta"><span>22:30</span><span>თბილისი</span></div>
+      </div>
+    </div>
+
+    <div style="font-size:12px; font-weight:800; text-align:center; color:#888; letter-spacing:2px; margin: 16px 0 10px;">── ფინალი ──</div>
+    <div class="bracket-row">
+      <div class="bracket-match" style="max-width:360px; border-color: #D97706;">
+        <div class="bracket-match-header gold">🏆 ფინალი — 13 ივლისი, 2026</div>
+        <div class="bracket-team">⭐ <span>აღმოსავლეთის</span> გამარჯვებული</div>
+        <div class="bracket-team">⭐ <span>დასავლეთის</span> გამარჯვებული</div>
+        <div class="bracket-meta"><span>22:30</span><span>თბილისი</span></div>
+      </div>
+    </div>
+
+    <div class="trophy">🏆</div>
+    <div class="final-note">2026 წლის ფეხბურთის შიდა ჩემპიონი</div>
+  </div>
+</div>
+
+<!-- PLAYERS TAB -->
+<div id="tab-players" class="section">
+  <h2 class="section-title">👥 გუნდების შემადგენლობა</h2>
+
+  <div style="display:flex; flex-direction:column; gap:16px;">
+
+    <div style="background:var(--orange); color:white; font-weight:800; font-size:13px; padding:8px 16px; border-radius:8px; letter-spacing:1px;">⚽ ჯგუფი A — აღმოსავლეთი</div>
+
+    <!-- ონლაინი (A1) -->
+    <div class="player-card">
+      <div class="pc-header orange">
+        <span class="pc-team">ონლაინი</span>
+        <span class="pc-dept">საბითუმო ოფისი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">პავლე ჭიჭაღუა</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ტატო მჭედლიშვილი</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">ნიკოლოზ ანთაძე</span>
+            <span class="player-pill">ბექა აზარაშვილი</span>
+            <span class="player-pill">საბა ნერგაძე</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">ნიკა ფეხშველაშვილი</span>
+            <span class="player-pill sub">გიორგი ესართია</span>
+            <span class="player-pill sub">გიორგი ჯავახიშვილი</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ბოლო სეზონი (A2) -->
+    <div class="player-card">
+      <div class="pc-header orange">
+        <span class="pc-team">ბოლო სეზონი</span>
+        <span class="pc-dept">გლდანი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">გიო ჯაიანი</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ზუკა გოცაძე</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">სანდრო ბულბულაშვილი</span>
+            <span class="player-pill">გია რობაქიძე</span>
+            <span class="player-pill">საბა გვიჩიანი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">დავით ნოზაძე</span>
+            <span class="player-pill sub">ლაშა სეფაშვილი</span>
+            <span class="player-pill sub">დავით სამანიშვილი</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phoenix (A3) -->
+    <div class="player-card">
+      <div class="pc-header orange">
+        <span class="pc-team">Phoenix</span>
+        <span class="pc-dept">1 ზუმერი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">დავით მამესწარაშვილი</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ლევანი ლაშხია</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">გიორგი ხულორდავა</span>
+            <span class="player-pill">ნიკოლოზ პირმისაშვილი</span>
+            <span class="player-pill">გიორგი ირემაშვილი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">გიორგი შეთეკაური</span>
+            <span class="player-pill">ბექა ბექაური</span>
+            <span class="player-pill sub">ზურა სურმანიძე</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blue Lock (A4) -->
+    <div class="player-card">
+      <div class="pc-header orange">
+        <span class="pc-team">Blue Lock</span>
+        <span class="pc-dept">ისთ ფოინთი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">ნიკოლოზ მინდაძე</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">დაჩი დარბაიძე</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">დემეტრე გრიგოლია</span>
+            <span class="player-pill">გიორგი გეთიაშვილი</span>
+            <span class="player-pill">გიორგი ჩიტუაშვილი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">დავით ომიაძე</span>
+            <span class="player-pill sub">გიგი დავითაშვილი</span>
+            <span class="player-pill sub">ნიკოლოზი ირემაშვილი</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFA (A5) -->
+    <div class="player-card">
+      <div class="pc-header orange">
+        <span class="pc-team">OFA</span>
+        <span class="pc-dept">ოფისი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">გიორგი ხიზანიშვილი</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ლაშა ნადირაძე</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">მათე დიდია</span>
+            <span class="player-pill">გიორგი გაბროშვილი</span>
+            <span class="player-pill">გიორგი კიკნაძე</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">თენგო დევაძე</span>
+            <span class="player-pill sub">გიორგი ბურდული</span>
+            <span class="player-pill sub">პეტრე ჭიჭაღუა</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--blue); color:white; font-weight:800; font-size:13px; padding:8px 16px; border-radius:8px; letter-spacing:1px; margin-top:8px;">⚽ ჯგუფი B — აღმოსავლეთი</div>
+
+    <!-- Midnight Hummer (B1) -->
+    <div class="player-card">
+      <div class="pc-header blue">
+        <span class="pc-team">Midnight Hummer</span>
+        <span class="pc-dept">სითი მოლი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">ივიკო გეგელაშვილი</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ლადო ბაბიაშვილი</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">ომარი ომიაძე</span>
+            <span class="player-pill">გიგი კუჭავა</span>
+            <span class="player-pill">ალექსანდრე გორდეზიანი</span>
+            <span class="player-pill">ომიკო ვალიშვილი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">ზურა ძნელაძე</span>
+            <span class="player-pill sub">დათა ჭანუყვაძე</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Black Stone (B2) -->
+    <div class="player-card">
+      <div class="pc-header blue">
+        <span class="pc-team">Black Stone</span>
+        <span class="pc-dept">საბითუმო ოფისი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">მერაბი თაქთაქიშვილი</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">მათე ქარდავა</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">ილია მაჭკალიშვილი</span>
+            <span class="player-pill">კობა სილაგაძე</span>
+            <span class="player-pill">ლევან ჩოხელი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">ლუკა ბარდაველიძე</span>
+            <span class="player-pill sub">ავთო ომსარაშვილი</span>
+            <span class="player-pill sub">ჯუბა მეტრეველი</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- იმპულსი (B3) -->
+    <div class="player-card">
+      <div class="pc-header blue">
+        <span class="pc-team">იმპულსი</span>
+        <span class="pc-dept">თბილისი მოლი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">ლუკა აბრამაშვილი</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">გიორგი სუხიშვილი</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">გიორგი პაიჭაძე</span>
+            <span class="player-pill">თენგო გიგილაშვილი</span>
+            <span class="player-pill">მიხეილ ჩხარტიშვილი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">თემურ ირემაშვილი</span>
+            <span class="player-pill sub">ლუკა მჭედლიშვილი</span>
+            <span class="player-pill sub">ნიკა ბუზალაძე</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QSANI (B4) -->
+    <div class="player-card">
+      <div class="pc-header blue">
+        <span class="pc-team">QSANI</span>
+        <span class="pc-dept">საბითუმო ქსანი · თბილისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">დუდუ ჟონჟოლაძე</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ზურაბი ჩაჩანიძე</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">ილიკო გოგოლაძე</span>
+            <span class="player-pill">საბა ტაგანაშვილი</span>
+            <span class="player-pill">ლაშა ბურდიაშვილი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">ალექს საფაროვი</span>
+            <span class="player-pill sub">ლევანი ამბროსიშვილი</span>
+            <span class="player-pill sub">გოჩა თამაზაშვილი</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#0891B2; color:white; font-weight:800; font-size:13px; padding:8px 16px; border-radius:8px; letter-spacing:1px; margin-top:8px;">⚽ ჯგუფი C — დასავლეთი</div>
+
+    <!-- ზუმერელი BMW შნიკები (C1) -->
+    <div class="player-card">
+      <div class="pc-header teal">
+        <span class="pc-team">ზუმერელი BMW შნიკები</span>
+        <span class="pc-dept">ბათუმი გრანდ მოლი · ბათუმი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">გიორგი გოგიტიძე</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ლუკა დოლიძე</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">ლევანი კოჩალიძე</span>
+            <span class="player-pill">ნიკა იაკობაძე</span>
+            <span class="player-pill">გიგა სამნიძე</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">ლუკა ქორიძე</span>
+            <span class="player-pill sub">ზურა თურმანიძე</span>
+            <span class="player-pill sub">დათა ბერიძე</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHŌRI-DAN (C2) -->
+    <div class="player-card">
+      <div class="pc-header teal">
+        <span class="pc-team">SHŌRI-DAN</span>
+        <span class="pc-dept">ბათუმი ჭავჭავაძე · ბათუმი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">ზაურ ჯიჯიეშვილი</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">მირზა შაინიძე</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">ნიკა ჯაფარიძე</span>
+            <span class="player-pill">გურამ უგლავა</span>
+            <span class="player-pill">სულხან ახმაევი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">ნიკა მაქაცარია</span>
+            <span class="player-pill sub">გიორგი კიკვაძე</span>
+            <span class="player-pill sub">საბა ქერქაძე</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FC 404 Team (C3) -->
+    <div class="player-card">
+      <div class="pc-header teal">
+        <span class="pc-team">FC 404 Team</span>
+        <span class="pc-dept">ზუგდიდი მოლი · ზუგდიდი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">ლექსო ლუკავა</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ნიკოლოზ ქაქუთია</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">ცოტნე თოდუა</span>
+            <span class="player-pill">დავით ყალიჩავა</span>
+            <span class="player-pill">დიმა შულაია</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">ნუგზარ კვარაცხელია</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ენერჯაიზერები "2032 (C4) -->
+    <div class="player-card">
+      <div class="pc-header teal">
+        <span class="pc-team">ენერჯაიზერები "2032</span>
+        <span class="pc-dept">ქუთაისი · ქუთაისი</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">ლევანი ჭოხონელიძე</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ლუკა შენგელია</span></div>
+        <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
+          <span class="pc-players">
+            <span class="player-pill">ალექსანდრე სირაძე</span>
+            <span class="player-pill">გიორგი მაკარიძე</span>
+            <span class="player-pill">ვახტანგ ტყეშელაშვილი</span>
+          </span>
+        </div>
+        <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
+          <span class="pc-players">
+            <span class="player-pill sub">საბა შენგელია</span>
+            <span class="player-pill sub">ზურაბი ფარცხალაძე</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- STANDINGS TAB -->
+<div id="tab-standings" class="section">
+  <h2 class="section-title">📊 ჯგუფური ეტაპის ქულათა ცხრილი</h2>
+
+  <div style="display:flex; flex-direction:column; gap:24px;">
+
+    <div>
+      <div style="background:var(--orange); color:white; font-weight:800; font-size:13px; padding:8px 16px; border-radius:8px; letter-spacing:1px; margin-bottom:10px;">⚽ ჯგუფი A — აღმოსავლეთი</div>
+      <div class="players-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>გუნდი</th>
+              <th>თ</th>
+              <th>მ</th>
+              <th>ფ</th>
+              <th>წ</th>
+              <th>გატ. გ</th>
+              <th>გაშ. გ</th>
+              <th>სხვ</th>
+              <th>ქ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="team-badge">A1</span>&nbsp; ონლაინი</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge">A2</span>&nbsp; ბოლო სეზონი</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge">A3</span>&nbsp; Phoenix</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge">A4</span>&nbsp; Blue Lock</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge">A5</span>&nbsp; OFA</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div style="background:var(--blue); color:white; font-weight:800; font-size:13px; padding:8px 16px; border-radius:8px; letter-spacing:1px; margin-bottom:10px;">⚽ ჯგუფი B — აღმოსავლეთი</div>
+      <div class="players-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>გუნდი</th>
+              <th>თ</th>
+              <th>მ</th>
+              <th>ფ</th>
+              <th>წ</th>
+              <th>გატ. გ</th>
+              <th>გაშ. გ</th>
+              <th>სხვ</th>
+              <th>ქ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="team-badge blue">B3</span>&nbsp; იმპულსი</td>
+              <td>1</td><td>1</td><td>0</td><td>0</td><td>5</td><td>1</td><td>0</td><td>3</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge blue">B1</span>&nbsp; Midnight Hummer</td>
+              <td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge blue">B2</span>&nbsp; Black Stone</td>
+              <td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge blue">B4</span>&nbsp; QSANI</td>
+              <td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>5</td><td>0</td><td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div style="background:#0891B2; color:white; font-weight:800; font-size:13px; padding:8px 16px; border-radius:8px; letter-spacing:1px; margin-bottom:10px;">⚽ ჯგუფი C — დასავლეთი</div>
+      <div class="players-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>გუნდი</th>
+              <th>თ</th>
+              <th>მ</th>
+              <th>ფ</th>
+              <th>წ</th>
+              <th>გატ. გ</th>
+              <th>გაშ. გ</th>
+              <th>სხვ</th>
+              <th>ქ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="team-badge teal">C1</span>&nbsp; ზუმერელი BMW შნიკები</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge teal">C2</span>&nbsp; SHŌRI-DAN</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge teal">C3</span>&nbsp; FC 404 Team</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td><span class="team-badge teal">C4</span>&nbsp; ენერჯაიზერები "2032</td>
+              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="font-size:11px; color:#888; padding:0 4px;">თ — თამაში, მ — მოგება, ფ — ფრე, წ — წაგება, გატ. გ — გატანილი გოლი, გაშ. გ — გაშვებული გოლი, სხვ — სხვაობა, ქ — ქულა</div>
+
+  </div>
+</div>
+
+<!-- SCORERS TAB -->
+<div id="tab-scorers" class="section">
+  <h2 class="section-title">🥅 გატანილი გოლების რაოდენობა და ავტორები</h2>
+
+  <div class="players-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>გოლის ავტორი</th>
+          <th style="text-align:center;">გატ. გოლი</th>
+          <th>გუნდი</th>
+          <th>ფილიალი / დეპარტამენტი</th>
+          <th>თარიღი</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ლუკა აბრამაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+          <td><span class="team-badge">იმპულსი</span></td>
+          <td>თბილისი მოლი</td>
+          <td>16.06.2026</td>
+        </tr>
+        <tr>
+          <td>გიორგი პაიჭაძე</td>
+          <td class="goal-count-cell"><span class="goal-count">1</span></td>
+          <td><span class="team-badge">იმპულსი</span></td>
+          <td>თბილისი მოლი</td>
+          <td>16.06.2026</td>
+        </tr>
+        <tr>
+          <td>ლუკა მჭედლიშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+          <td><span class="team-badge">იმპულსი</span></td>
+          <td>თბილისი მოლი</td>
+          <td>16.06.2026</td>
+        </tr>
+        <tr>
+          <td>საბა ტაგანაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">1</span></td>
+          <td><span class="team-badge blue">QSANI</span></td>
+          <td>საბითუმო ქსანი</td>
+          <td>16.06.2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <strong>2026 წლის ფეხბურთის შიდა ჩემპიონატი</strong><br>
+  <span>ზუმერი &nbsp;•&nbsp; ივნისი – ივლისი 2026 &nbsp;•&nbsp; 13 გუნდი &nbsp;•&nbsp; 3 ჯგუფი</span>
+</footer>
+
+<script>
+function showTab(tab, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
