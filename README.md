@@ -1058,7 +1058,7 @@
       </div>
       <div class="pc-body">
         <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">გიორგი ხიზანიშვილი</span></div>
-        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ლაშა ნადირაძე</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ნიკა კლიმიაშვილი</span></div>
         <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
           <span class="pc-players">
             <span class="player-pill">მათე დიდია</span>
@@ -1070,7 +1070,7 @@
           <span class="pc-players">
             <span class="player-pill sub">თენგო დევაძე</span>
             <span class="player-pill sub">გიორგი ბურდული</span>
-            <span class="player-pill sub">პეტრე ჭიჭაღუა</span>
+            <span class="player-pill sub">ლაშა ნადირაძე</span>
           </span>
         </div>
       </div>
@@ -1192,7 +1192,7 @@
       </div>
       <div class="pc-body">
         <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">გიორგი გოგიტიძე</span></div>
-        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ლუკა დოლიძე</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ნიკა დიასამიძე</span></div>
         <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
           <span class="pc-players">
             <span class="player-pill">ლევანი კოჩალიძე</span>
