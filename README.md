@@ -1,6 +1,3 @@
-# chmp2026
-[ჩემპიონატი (1).html](https://github.com/user-attachments/files/29042884/1.html)
-<!DOCTYPE html>
 <html lang="ka">
 <head>
 <meta charset="UTF-8">
