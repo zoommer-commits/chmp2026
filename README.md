@@ -1142,7 +1142,7 @@
         <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
           <span class="pc-players">
             <span class="player-pill">გიორგი პაიჭაძე</span>
-            <span class="player-pill">თენგო გიგილაშვილი</span>
+            <span class="player-pill">თენგო დევაძე</span>
             <span class="player-pill">მიხეილ ჩხარტიშვილი</span>
           </span>
         </div>
