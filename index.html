@@ -1486,7 +1486,7 @@
           <td>17.06.2026</td>
         </tr>
         <tr>
-          <td>თენგო გიგილაშვილი</td>
+          <td>თენგო დევაძე</td>
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
           <td><span class="team-badge">OFA</span></td>
           <td>ოფისი</td>
@@ -1626,7 +1626,7 @@
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
         <tr>
-          <td>თენგო გიგილაშვილი</td>
+          <td>თენგო დევაძე</td>
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
         <tr>
