@@ -231,7 +231,61 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.15s;
   }
+  .date-header:hover { opacity: 0.92; }
+  .date-header.collapsed { border-radius: 10px; }
+  .collapse-icon {
+    font-size: 14px;
+    font-weight: 900;
+    transition: transform 0.25s;
+    margin-left: 10px;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+  .date-header.collapsed .collapse-icon { transform: rotate(-90deg); }
+  .collapsible-body {
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+    max-height: 2000px;
+    opacity: 1;
+  }
+  .collapsible-body.collapsed {
+    max-height: 0;
+    opacity: 0;
+  }
+  .past-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.25);
+    color: rgba(255,255,255,0.9);
+    margin-left: 6px;
+    flex-shrink: 0;
+  }
+
+  /* scorer date section */
+  .scorer-date-section { margin-bottom: 20px; }
+  .scorer-date-header {
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: white;
+    padding: 9px 16px;
+    border-radius: 10px 10px 0 0;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.15s;
+  }
+  .scorer-date-header:hover { opacity: 0.92; }
+  .scorer-date-header.collapsed { border-radius: 10px; }
+  .scorer-date-header.collapsed .collapse-icon { transform: rotate(-90deg); }
   .date-badge {
     background: rgba(255,255,255,0.25);
     padding: 3px 10px;
@@ -723,163 +777,264 @@
 
   <div style="margin-bottom: 10px; font-size: 13px; font-weight: 700; color: var(--orange);">⚽ A და B ჯგუფი — თბილისი (Buckswood Stadium)</div>
 
-  <div class="schedule-group">
-    <div class="date-header">16 ივნისი, 2026 &nbsp;—&nbsp; სამშაბათი<div class="date-badge">B ჯგუფი</div></div>
-    <div class="match-row group-b">
-      <span class="match-time blue">21:30</span>
-      <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span></div>
-      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+  <div class="schedule-group" data-date="2026-06-16">
+    <div class="date-header" onclick="toggleGroup(this)">
+      <span>16 ივნისი, 2026 &nbsp;—&nbsp; სამშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">B ჯგუფი</div>
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
     </div>
-    <div class="match-row group-b">
-      <span class="match-time blue">22:30</span>
-      <div class="match-vs"><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
-      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
-    </div>
-  </div>
-
-  <div class="schedule-group">
-    <div class="date-header">17 ივნისი, 2026 &nbsp;—&nbsp; ოთხშაბათი<div class="date-badge">A ჯგუფი</div></div>
-    <div class="match-row">
-      <span class="match-time">21:30</span>
-      <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
-    </div>
-    <div class="match-row">
-      <span class="match-time">22:30</span>
-      <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    <div class="collapsible-body">
+      <div class="match-row group-b">
+        <span class="match-time blue">21:30</span>
+        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span></div>
+        <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+      <div class="match-row group-b">
+        <span class="match-time blue">22:30</span>
+        <div class="match-vs"><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+        <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="schedule-group">
-    <div class="date-header">18 ივნისი, 2026 &nbsp;—&nbsp; ხუთშაბათი<div class="date-badge">B ჯგუფი</div></div>
-    <div class="match-row group-b">
-      <span class="match-time blue">21:30</span>
-      <div class="match-vs"><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
-      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+  <div class="schedule-group" data-date="2026-06-17">
+    <div class="date-header" onclick="toggleGroup(this)">
+      <span>17 ივნისი, 2026 &nbsp;—&nbsp; ოთხშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">A ჯგუფი</div>
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
     </div>
-    <div class="match-row group-b">
-      <span class="match-time blue">22:30</span>
-      <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span></div>
-      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
-    </div>
-  </div>
-
-  <div class="schedule-group">
-    <div class="date-header">19 ივნისი, 2026 &nbsp;—&nbsp; პარასკევი<div class="date-badge">A ჯგუფი</div></div>
-    <div class="match-row">
-      <span class="match-time">21:30</span>
-      <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
-    </div>
-    <div class="match-row">
-      <span class="match-time">22:30</span>
-      <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    <div class="collapsible-body">
+      <div class="match-row">
+        <span class="match-time">21:30</span>
+        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+      <div class="match-row">
+        <span class="match-time">22:30</span>
+        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="schedule-group">
-    <div class="date-header">22 ივნისი, 2026 &nbsp;—&nbsp; ორშაბათი<div class="date-badge">A ჯგუფი</div></div>
-    <div class="match-row">
-      <span class="match-time">22:00</span>
-      <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+  <div class="schedule-group" data-date="2026-06-18">
+    <div class="date-header" onclick="toggleGroup(this)">
+      <span>18 ივნისი, 2026 &nbsp;—&nbsp; ხუთშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">B ჯგუფი</div>
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
     </div>
-    <div class="match-row">
-      <span class="match-time">23:00</span>
-      <div class="match-vs"><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
-    </div>
-  </div>
-
-  <div class="schedule-group">
-    <div class="date-header">29 ივნისი, 2026 &nbsp;—&nbsp; ორშაბათი<div class="date-badge">A ჯგუფი</div></div>
-    <div class="match-row">
-      <span class="match-time">21:30</span>
-      <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
-    </div>
-    <div class="match-row">
-      <span class="match-time">22:30</span>
-      <div class="match-vs"><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    <div class="collapsible-body">
+      <div class="match-row group-b">
+        <span class="match-time blue">21:30</span>
+        <div class="match-vs"><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+        <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+      <div class="match-row group-b">
+        <span class="match-time blue">22:30</span>
+        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span></div>
+        <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="schedule-group">
-    <div class="date-header">1 ივლისი, 2026 &nbsp;—&nbsp; ოთხშაბათი<div class="date-badge">A &amp; B</div></div>
-    <div class="match-row">
-      <span class="match-time">21:30</span>
-      <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+  <div class="schedule-group" data-date="2026-06-19">
+    <div class="date-header" onclick="toggleGroup(this)">
+      <span>19 ივნისი, 2026 &nbsp;—&nbsp; პარასკევი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">A ჯგუფი</div>
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
     </div>
-    <div class="match-row group-b">
-      <span class="match-time blue">22:30</span>
-      <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
-      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+    <div class="collapsible-body">
+      <div class="match-row">
+        <span class="match-time">21:30</span>
+        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+      <div class="match-row">
+        <span class="match-time">22:30</span>
+        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="schedule-group">
-    <div class="date-header">2 ივლისი, 2026 &nbsp;—&nbsp; ხუთშაბათი<div class="date-badge">A &amp; B</div></div>
-    <div class="match-row group-b">
-      <span class="match-time blue">21:30</span>
-      <div class="match-vs"><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span></div>
-      <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+  <div class="schedule-group" data-date="2026-06-22">
+    <div class="date-header" onclick="toggleGroup(this)">
+      <span>22 ივნისი, 2026 &nbsp;—&nbsp; ორშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">A ჯგუფი</div>
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
     </div>
-    <div class="match-row">
-      <span class="match-time">22:30</span>
-      <div class="match-vs"><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
-      <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+    <div class="collapsible-body">
+      <div class="match-row">
+        <span class="match-time">22:00</span>
+        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+      <div class="match-row">
+        <span class="match-time">23:00</span>
+        <div class="match-vs"><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule-group" data-date="2026-06-29">
+    <div class="date-header" onclick="toggleGroup(this)">
+      <span>29 ივნისი, 2026 &nbsp;—&nbsp; ორშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">A ჯგუფი</div>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="match-row">
+        <span class="match-time">21:30</span>
+        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+      <div class="match-row">
+        <span class="match-time">22:30</span>
+        <div class="match-vs"><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule-group" data-date="2026-07-01">
+    <div class="date-header" onclick="toggleGroup(this)">
+      <span>1 ივლისი, 2026 &nbsp;—&nbsp; ოთხშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">A &amp; B</div>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="match-row">
+        <span class="match-time">21:30</span>
+        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+      <div class="match-row group-b">
+        <span class="match-time blue">22:30</span>
+        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+        <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule-group" data-date="2026-07-02">
+    <div class="date-header" onclick="toggleGroup(this)">
+      <span>2 ივლისი, 2026 &nbsp;—&nbsp; ხუთშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">A &amp; B</div>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="match-row group-b">
+        <span class="match-time blue">21:30</span>
+        <div class="match-vs"><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span></div>
+        <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
+      <div class="match-row">
+        <span class="match-time">22:30</span>
+        <div class="match-vs"><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+      </div>
     </div>
   </div>
 
   <div style="margin: 24px 0 10px; font-size: 13px; font-weight: 700; color: #0891B2;">⚽ C ჯგუფი — დასავლეთი</div>
 
-  <div class="schedule-group">
-    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);">30 ივნისი, 2026 &nbsp;—&nbsp; სამშაბათი<div class="date-badge">C ჯგუფი • ბათუმი</div></div>
-    <div class="match-row group-c">
-      <span class="match-time teal">22:30</span>
-      <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span></div>
-      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ბათუმი</span></div>
+  <div class="schedule-group" data-date="2026-06-30">
+    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);" onclick="toggleGroup(this)">
+      <span>30 ივნისი, 2026 &nbsp;—&nbsp; სამშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">C ჯგუფი • ბათუმი</div>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="match-row group-c">
+        <span class="match-time teal">22:30</span>
+        <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span></div>
+        <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ბათუმი</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="schedule-group">
-    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);">3 ივლისი, 2026 &nbsp;—&nbsp; პარასკევი<div class="date-badge">C ჯგუფი • ზუგდიდი</div></div>
-    <div class="match-row group-c">
-      <span class="match-time teal">22:30</span>
-      <div class="match-vs"><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
-      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+  <div class="schedule-group" data-date="2026-07-03">
+    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);" onclick="toggleGroup(this)">
+      <span>3 ივლისი, 2026 &nbsp;—&nbsp; პარასკევი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">C ჯგუფი • ზუგდიდი</div>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="match-row group-c">
+        <span class="match-time teal">22:30</span>
+        <div class="match-vs"><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
+        <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="schedule-group">
-    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);">7 ივლისი, 2026 &nbsp;—&nbsp; სამშაბათი<div class="date-badge">C ჯგუფი • ზუგდიდი</div></div>
-    <div class="match-row group-c">
-      <span class="match-time teal">22:30</span>
-      <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
-      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+  <div class="schedule-group" data-date="2026-07-07">
+    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);" onclick="toggleGroup(this)">
+      <span>7 ივლისი, 2026 &nbsp;—&nbsp; სამშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">C ჯგუფი • ზუგდიდი</div>
+        <span class="collapse-icon">▼</span>
+      </div>
     </div>
-    <div class="match-row group-c">
-      <span class="match-time teal">23:30</span>
-      <div class="match-vs"><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span></div>
-      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+    <div class="collapsible-body">
+      <div class="match-row group-c">
+        <span class="match-time teal">22:30</span>
+        <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
+        <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+      </div>
+      <div class="match-row group-c">
+        <span class="match-time teal">23:30</span>
+        <div class="match-vs"><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span></div>
+        <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="schedule-group">
-    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);">9 ივლისი, 2026 &nbsp;—&nbsp; ხუთშაბათი<div class="date-badge">C ჯგუფი • ზუგდიდი</div></div>
-    <div class="match-row group-c">
-      <span class="match-time teal">22:30</span>
-      <div class="match-vs"><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
-      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+  <div class="schedule-group" data-date="2026-07-09">
+    <div class="date-header" style="background: linear-gradient(135deg,#0891B2,#0e7490);" onclick="toggleGroup(this)">
+      <span>9 ივლისი, 2026 &nbsp;—&nbsp; ხუთშაბათი</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <div class="date-badge">C ჯგუფი • ზუგდიდი</div>
+        <span class="collapse-icon">▼</span>
+      </div>
     </div>
-    <div class="match-row group-c">
-      <span class="match-time teal">23:30</span>
-      <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span></div>
-      <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+    <div class="collapsible-body">
+      <div class="match-row group-c">
+        <span class="match-time teal">22:30</span>
+        <div class="match-vs"><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C4 ენერჯაიზერები "2032<span class="match-branch">(ქუთაისი)</span></span></div>
+        <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+      </div>
+      <div class="match-row group-c">
+        <span class="match-time teal">23:30</span>
+        <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C3 FC 404 Team<span class="match-branch">(ზუგდიდი მოლი)</span></span></div>
+        <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ზუგდიდი</span></div>
+      </div>
     </div>
   </div>
 
@@ -1142,7 +1297,7 @@
         <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
           <span class="pc-players">
             <span class="player-pill">გიორგი პაიჭაძე</span>
-            <span class="player-pill">თენგო დევაძე</span>
+            <span class="player-pill">თენგო გიგილაშვილი</span>
             <span class="player-pill">მიხეილ ჩხარტიშვილი</span>
           </span>
         </div>
@@ -1314,23 +1469,23 @@
           <tbody>
             <tr>
               <td><span class="team-badge">A5</span>&nbsp; OFA</td>
-              <td>1</td><td>1</td><td>0</td><td>0</td><td>9</td><td>0</td><td>9</td><td>3</td>
+              <td>3</td><td>3</td><td>0</td><td>0</td><td>17</td><td>3</td><td>14</td><td>9</td>
             </tr>
             <tr>
               <td><span class="team-badge">A4</span>&nbsp; Blue Lock</td>
-              <td>1</td><td>1</td><td>0</td><td>0</td><td>11</td><td>3</td><td>8</td><td>3</td>
+              <td>1</td><td>2</td><td>0</td><td>0</td><td>11</td><td>3</td><td>8</td><td>6</td>
             </tr>
             <tr>
               <td><span class="team-badge">A3</span>&nbsp; Phoenix</td>
-              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+              <td>2</td><td>1</td><td>0</td><td>1</td><td>9</td><td>3</td><td>6</td><td>3</td>
             </tr>
             <tr>
               <td><span class="team-badge">A2</span>&nbsp; ბოლო სეზონი</td>
-              <td>1</td><td>0</td><td>0</td><td>1</td><td>3</td><td>11</td><td>-8</td><td>0</td>
+              <td>2</td><td>0</td><td>0</td><td>2</td><td>4</td><td>17</td><td>-13</td><td>0</td>
             </tr>
             <tr>
               <td><span class="team-badge">A1</span>&nbsp; ონლაინი</td>
-              <td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>9</td><td>-9</td><td>0</td>
+              <td>2</td><td>0</td><td>0</td><td>3</td><td>1</td><td>17</td><td>-16</td><td>0</td>
             </tr>
           </tbody>
         </table>
@@ -1424,146 +1579,135 @@
 <div id="tab-scorers" class="section">
   <h2 class="section-title">🥅 გატანილი გოლების რაოდენობა და ავტორები</h2>
 
-  <div class="players-table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>გოლის ავტორი</th>
-          <th style="text-align:center;">გატ. გოლი</th>
-          <th>გუნდი</th>
-          <th>ფილიალი / დეპარტამენტი</th>
-          <th>თარიღი</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ლუკა აბრამაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-          <td><span class="team-badge blue">იმპულსი</span></td>
-          <td>თბილისი მოლი</td>
-          <td>16.06.2026</td>
-        </tr>
-        <tr>
-          <td>გიორგი პაიჭაძე</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge blue">იმპულსი</span></td>
-          <td>თბილისი მოლი</td>
-          <td>16.06.2026</td>
-        </tr>
-        <tr>
-          <td>ლუკა მჭედლიშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-          <td><span class="team-badge blue">იმპულსი</span></td>
-          <td>თბილისი მოლი</td>
-          <td>16.06.2026</td>
-        </tr>
-        <tr>
-          <td>საბა ტაგანაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge blue">QSANI</span></td>
-          <td>საბითუმო ქსანი</td>
-          <td>16.06.2026</td>
-        </tr>
-        <tr>
-          <td>გიორგი ხიზანიშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">4</span></td>
-          <td><span class="team-badge">OFA</span></td>
-          <td>ოფისი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>გიორგი კიკნაძე</td>
-          <td class="goal-count-cell"><span class="goal-count">3</span></td>
-          <td><span class="team-badge">OFA</span></td>
-          <td>ოფისი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>მათე დიდია</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge">OFA</span></td>
-          <td>ოფისი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>თენგო დევაძე</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge">OFA</span></td>
-          <td>ოფისი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>ნიკოლოზ მინდაძე</td>
-          <td class="goal-count-cell"><span class="goal-count">3</span></td>
-          <td><span class="team-badge">Blue Lock</span></td>
-          <td>ისთ ფოინთი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>დემეტრე გრიგოლია</td>
-          <td class="goal-count-cell"><span class="goal-count">5</span></td>
-          <td><span class="team-badge">Blue Lock</span></td>
-          <td>ისთ ფოინთი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>ნიკოლოზ ირემაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge">Blue Lock</span></td>
-          <td>ისთ ფოინთი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>გიორგი ჩიტუაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-          <td><span class="team-badge">Blue Lock</span></td>
-          <td>ისთ ფოინთი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>ლაშა სეფაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-          <td><span class="team-badge">ბოლო სეზონი</span></td>
-          <td>გლდანი/ ცენტრალი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>საბა გვიჩიანი</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge">ბოლო სეზონი</span></td>
-          <td>გლდანი/ ცენტრალი</td>
-          <td>17.06.2026</td>
-        </tr>
-        <tr>
-          <td>ავთო ომსარაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge blue">Black Stone</span></td>
-          <td>საბითუმო</td>
-          <td>18.06.2026</td>
-        </tr>
-        <tr>
-          <td>ლუკა ბარდაველიძე</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge blue">Black Stone</span></td>
-          <td>საბითუმო</td>
-          <td>18.06.2026</td>
-        </tr>
-        <tr>
-          <td>ზურაბი ჩაჩანიძე</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-          <td><span class="team-badge blue">QSANI</span></td>
-          <td>საბითუმო ქსანი</td>
-          <td>18.06.2026</td>
-        </tr>
-        <tr>
-          <td>ომარი ომიაძე</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-          <td><span class="team-badge blue">Midnight Hummer</span></td>
-          <td>სითი მოლი საბურთალო</td>
-          <td>18.06.2026</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- 16 ივნისი -->
+  <div class="scorer-date-section" data-date="2026-06-16">
+    <div class="scorer-date-header" onclick="toggleGroup(this)">
+      <span>📅 16 ივნისი, 2026 — B ჯგუფი (Midnight Hummer vs Black Stone &amp; იმპულსი vs QSANI)</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="players-table-wrap">
+        <table>
+          <thead><tr><th>გოლის ავტორი</th><th style="text-align:center;">გატ. გოლი</th><th>გუნდი</th><th>ფილიალი / დეპარტამენტი</th></tr></thead>
+          <tbody>
+            <tr><td>ლუკა აბრამაშვილი</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge blue">იმპულსი</span></td><td>თბილისი მოლი</td></tr>
+            <tr><td>გიორგი პაიჭაძე</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge blue">იმპულსი</span></td><td>თბილისი მოლი</td></tr>
+            <tr><td>ლუკა მჭედლიშვილი</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge blue">იმპულსი</span></td><td>თბილისი მოლი</td></tr>
+            <tr><td>საბა ტაგანაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge blue">QSANI</span></td><td>საბითუმო ქსანი</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 ივნისი -->
+  <div class="scorer-date-section" data-date="2026-06-17">
+    <div class="scorer-date-header" onclick="toggleGroup(this)">
+      <span>📅 17 ივნისი, 2026 — A ჯგუფი (ონლაინი vs OFA &amp; ბოლო სეზონი vs Blue Lock)</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="players-table-wrap">
+        <table>
+          <thead><tr><th>გოლის ავტორი</th><th style="text-align:center;">გატ. გოლი</th><th>გუნდი</th><th>ფილიალი / დეპარტამენტი</th></tr></thead>
+          <tbody>
+            <tr><td>გიორგი ხიზანიშვილი</td><td class="goal-count-cell"><span class="goal-count">4</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>გიორგი კიკნაძე</td><td class="goal-count-cell"><span class="goal-count">3</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>მათე დიდია</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>თენგო დევაძე</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>ნიკოლოზ მინდაძე</td><td class="goal-count-cell"><span class="goal-count">3</span></td><td><span class="team-badge">Blue Lock</span></td><td>ისთ ფოინთი</td></tr>
+            <tr><td>დემეტრე გრიგოლია</td><td class="goal-count-cell"><span class="goal-count">5</span></td><td><span class="team-badge">Blue Lock</span></td><td>ისთ ფოინთი</td></tr>
+            <tr><td>ნიკოლოზ ირემაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">Blue Lock</span></td><td>ისთ ფოინთი</td></tr>
+            <tr><td>გიორგი ჩიტუაშვილი</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge">Blue Lock</span></td><td>ისთ ფოინთი</td></tr>
+            <tr><td>ლაშა სეფაშვილი</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge">ბოლო სეზონი</span></td><td>გლდანი/ ცენტრალი</td></tr>
+            <tr><td>საბა გვიჩიანი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">ბოლო სეზონი</span></td><td>გლდანი/ ცენტრალი</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 ივნისი -->
+  <div class="scorer-date-section" data-date="2026-06-18">
+    <div class="scorer-date-header" onclick="toggleGroup(this)">
+      <span>📅 18 ივნისი, 2026 — B ჯგუფი (Black Stone vs QSANI &amp; Midnight Hummer vs იმპულსი)</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="players-table-wrap">
+        <table>
+          <thead><tr><th>გოლის ავტორი</th><th style="text-align:center;">გატ. გოლი</th><th>გუნდი</th><th>ფილიალი / დეპარტამენტი</th></tr></thead>
+          <tbody>
+            <tr><td>ავთო ომსარაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge blue">Black Stone</span></td><td>საბითუმო</td></tr>
+            <tr><td>ლუკა ბარდაველიძე</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge blue">Black Stone</span></td><td>საბითუმო</td></tr>
+            <tr><td>ზურაბი ჩაჩანიძე</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge blue">QSANI</span></td><td>საბითუმო ქსანი</td></tr>
+            <tr><td>ომარი ომიაძე</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge blue">Midnight Hummer</span></td><td>სითი მოლი საბურთალო</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 ივნისი -->
+  <div class="scorer-date-section" data-date="2026-06-19">
+    <div class="scorer-date-header" onclick="toggleGroup(this)">
+      <span>📅 19 ივნისი, 2026 — A ჯგუფი (ბოლო სეზონი vs OFA &amp; ონლაინი vs Phoenix)</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="players-table-wrap">
+        <table>
+          <thead><tr><th>გოლის ავტორი</th><th style="text-align:center;">გატ. გოლი</th><th>გუნდი</th><th>ფილიალი / დეპარტამენტი</th></tr></thead>
+          <tbody>
+            <tr><td>გიორგი ხიზანიშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>გიორგი გაბროშვილი</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>გიორგი კიკნაძე</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>თენგო დევაძე</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>სანდრო ბულბულაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">ბოლო სეზონი</span></td><td>გლდანი/ ცენტრალი</td></tr>
+            <tr><td>გიორგი ხულორდავა</td><td class="goal-count-cell"><span class="goal-count">3</span></td><td><span class="team-badge">Phoenix</span></td><td>1 ზუმერი</td></tr>
+            <tr><td>გიორგი ირემაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">Phoenix</span></td><td>1 ზუმერი</td></tr>
+            <tr><td>დავით მამესწარაშვილი</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge">Phoenix</span></td><td>1 ზუმერი</td></tr>
+            <tr><td>ბექა ბექაური</td><td class="goal-count-cell"><span class="goal-count">2</span></td><td><span class="team-badge">Phoenix</span></td><td>1 ზუმერი</td></tr>
+            <tr><td>ბექა აზარაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge blue">ონლაინი</span></td><td>საბითუმო</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 ივნისი -->
+  <div class="scorer-date-section" data-date="2026-06-22">
+    <div class="scorer-date-header" onclick="toggleGroup(this)">
+      <span>📅 22 ივნისი, 2026 — A ჯგუფი (ონლაინი vs Blue Lock &amp; Phoenix vs OFA)</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="players-table-wrap">
+        <table>
+          <thead><tr><th>გოლის ავტორი</th><th style="text-align:center;">გატ. გოლი</th><th>გუნდი</th><th>ფილიალი / დეპარტამენტი</th></tr></thead>
+          <tbody>
+            <tr><td>გიორგი ხიზანიშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>მათე დიდია</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>გიორგი ირემაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">Phoenix</span></td><td>1 ზუმერი</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <h2 class="section-title" style="margin-top:32px;">📦 ჯამური გოლები თანამშრომლების მიხედვით</h2>
@@ -1578,19 +1722,23 @@
       </thead>
       <tbody>
         <tr>
+          <td>გიორგი ხიზანიშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">6</span></td>
+        </tr>
+        <tr>
           <td>დემეტრე გრიგოლია</td>
           <td class="goal-count-cell"><span class="goal-count">5</span></td>
         </tr>
         <tr>
-          <td>გიორგი ხიზანიშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">4</span></td>
-        </tr>
-        <tr>
           <td>გიორგი კიკნაძე</td>
-          <td class="goal-count-cell"><span class="goal-count">3</span></td>
+          <td class="goal-count-cell"><span class="goal-count">5</span></td>
         </tr>
         <tr>
           <td>ნიკოლოზ მინდაძე</td>
+          <td class="goal-count-cell"><span class="goal-count">3</span></td>
+        </tr>
+        <tr>
+          <td>გიორგი ხულორდავა</td>
           <td class="goal-count-cell"><span class="goal-count">3</span></td>
         </tr>
         <tr>
@@ -1614,19 +1762,35 @@
           <td class="goal-count-cell"><span class="goal-count">2</span></td>
         </tr>
         <tr>
+          <td>გიორგი გაბროშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
+          <td>გიორგი ირემაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
+          <td>ბექა ბექაური</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
+          <td>დავით მამესწარაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
+          <td>მათე დიდია</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
+          <td>თენგო დევაძე</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
           <td>გიორგი პაიჭაძე</td>
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
         <tr>
           <td>საბა ტაგანაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-        </tr>
-        <tr>
-          <td>მათე დიდია</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-        </tr>
-        <tr>
-          <td>თენგო დევაძე</td>
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
         <tr>
@@ -1647,6 +1811,14 @@
         </tr>
         <tr>
           <td>ზურაბი ჩაჩანიძე</td>
+          <td class="goal-count-cell"><span class="goal-count">1</span></td>
+        </tr>
+        <tr>
+          <td>სანდრო ბულბულაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">1</span></td>
+        </tr>
+        <tr>
+          <td>ბექა აზარაშვილი</td>
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
       </tbody>
@@ -1666,6 +1838,42 @@ function showTab(tab, btn) {
   document.getElementById('tab-' + tab).classList.add('active');
   btn.classList.add('active');
 }
+
+function toggleGroup(header) {
+  const body = header.nextElementSibling;
+  const isCollapsed = body.classList.contains('collapsed');
+  if (isCollapsed) {
+    body.classList.remove('collapsed');
+    header.classList.remove('collapsed');
+  } else {
+    body.classList.add('collapsed');
+    header.classList.add('collapsed');
+  }
+}
+
+// Auto-collapse past date groups on page load
+(function() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // Handle schedule groups and scorer date sections
+  const groups = document.querySelectorAll('[data-date]');
+  groups.forEach(function(group) {
+    const dateStr = group.getAttribute('data-date');
+    const groupDate = new Date(dateStr);
+    groupDate.setHours(0, 0, 0, 0);
+
+    if (groupDate < today) {
+      // Past date: collapse by default
+      const header = group.querySelector('.date-header, .scorer-date-header');
+      const body = group.querySelector('.collapsible-body');
+      if (header && body) {
+        body.classList.add('collapsed');
+        header.classList.add('collapsed');
+      }
+    }
+  });
+})();
 </script>
 </body>
 </html>
