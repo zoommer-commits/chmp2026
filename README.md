@@ -1473,7 +1473,7 @@
             </tr>
             <tr>
               <td><span class="team-badge">A4</span>&nbsp; Blue Lock</td>
-              <td>1</td><td>2</td><td>0</td><td>0</td><td>11</td><td>3</td><td>8</td><td>6</td>
+              <td>2</td><td>2</td><td>0</td><td>0</td><td>14</td><td>3</td><td>11</td><td>6</td>
             </tr>
             <tr>
               <td><span class="team-badge">A3</span>&nbsp; Phoenix</td>
@@ -1485,7 +1485,7 @@
             </tr>
             <tr>
               <td><span class="team-badge">A1</span>&nbsp; ონლაინი</td>
-              <td>2</td><td>0</td><td>0</td><td>3</td><td>1</td><td>17</td><td>-16</td><td>0</td>
+              <td>3</td><td>0</td><td>0</td><td>3</td><td>1</td><td>20</td><td>-19</td><td>0</td>
             </tr>
           </tbody>
         </table>
