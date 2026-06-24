@@ -1410,6 +1410,7 @@
         <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
           <span class="pc-players">
             <span class="player-pill sub">ნუგზარ კვარაცხელია</span>
+            <span class="player-pill sub">გაბრიელ როგავა</span>
           </span>
         </div>
       </div>
