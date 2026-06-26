@@ -345,6 +345,17 @@
   }
   .vs-badge.blue { background: var(--blue); }
   .vs-badge.gold { background: #D97706; }
+  .score-badge {
+    background: #1A1A2E;
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 3px 10px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    letter-spacing: 1px;
+  }
+  .score-badge.blue { background: var(--blue-dark); }
   .match-meta {
     display: flex;
     gap: 6px;
@@ -603,6 +614,79 @@
     .groups-grid { grid-template-columns: 1fr; }
     .pc-dept { display: none; }
   }
+
+  /* ---- RESULTS TAB ---- */
+  .status-done {
+    background: #dcfce7; color: #16a34a;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 7px; border-radius: 10px; white-space: nowrap;
+  }
+  .status-pending {
+    background: #f3e8ff; color: #9333ea;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 7px; border-radius: 10px; white-space: nowrap;
+  }
+  .status-nogame {
+    background: #fef9c3; color: #b45309;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 7px; border-radius: 10px; white-space: nowrap;
+  }
+  .rt-section { }
+  .rt-section-header {
+    font-size: 13px; font-weight: 800;
+    padding: 9px 16px; border-radius: 8px;
+    letter-spacing: 0.5px; margin-bottom: 10px;
+    color: white;
+  }
+  .rt-section-header.east { background: var(--orange); }
+  .rt-section-header.west { background: #0891B2; }
+  .rt-section-header.final { background: #D97706; }
+  /* Score badge compact */
+  .sc-done {
+    display: inline-block;
+    background: #1A1A2E; color: white;
+    font-size: 12px; font-weight: 900;
+    padding: 2px 8px; border-radius: 6px;
+    letter-spacing: 1px; min-width: 38px;
+    text-align: center;
+  }
+  .sc-done.blue { background: var(--blue-dark); }
+  .sc-pending {
+    display: inline-block;
+    background: #e5e7eb; color: #6b7280;
+    font-size: 10px; font-weight: 800;
+    padding: 2px 6px; border-radius: 6px;
+    text-align: center; min-width: 28px;
+  }
+  .sc-pending.blue { background: #dbeafe; color: var(--blue); }
+  .sc-pending.teal { background: #cffafe; color: #0891B2; }
+  .sc-pending.gold { background: #fef3c7; color: #D97706; }
+  .rt-sc { text-align: center; white-space: nowrap; }
+  /* Column widths for results table */
+  .results-tbl .rt-date { white-space: nowrap; width: 70px; }
+  .results-tbl .rt-day  { white-space: nowrap; width: 52px; }
+  .results-tbl .rt-time { white-space: nowrap; width: 52px; }
+  .results-tbl .rt-score { width: 52px; text-align: center; }
+  .results-tbl .rt-grp  { width: 44px; text-align: center; }
+  .results-tbl .rt-status { white-space: nowrap; }
+  .results-tbl .rt-team { }
+  /* Filter buttons */
+  .rf-btn {
+    padding: 6px 13px; border-radius: 20px;
+    border: 2px solid #ccc; background: white; color: #555;
+    font-weight: 700; font-size: 12px; cursor: pointer;
+    font-family: 'Noto Sans Georgian', sans-serif;
+    transition: all 0.15s;
+  }
+  .rf-btn.rf-active { background: var(--orange); border-color: var(--orange); color: white; }
+  .rf-btn[id="rf-east"].rf-active { background: var(--orange); border-color: var(--orange); color: white; }
+  .rf-btn[id="rf-west"].rf-active { background: #0891B2; border-color: #0891B2; color: white; }
+  .rf-btn[id="rf-A"].rf-active { background: var(--orange); border-color: var(--orange); color: white; }
+  .rf-btn[id="rf-B"].rf-active { background: var(--blue); border-color: var(--blue); color: white; }
+  .rf-btn[id="rf-C"].rf-active { background: #0891B2; border-color: #0891B2; color: white; }
+  .rf-btn[id="rf-done"].rf-active { background: #16a34a; border-color: #16a34a; color: white; }
+  .rf-btn[id="rf-pending"].rf-active { background: #9333ea; border-color: #9333ea; color: white; }
+
 </style>
 </head>
 <body>
@@ -633,6 +717,7 @@
   <button class="tab-btn" onclick="showTab('players', this)">👥 მოთამაშეები</button>
   <button class="tab-btn" onclick="showTab('standings', this)">📊 ქულათა ცხრილი</button>
   <button class="tab-btn" onclick="showTab('scorers', this)">🥅 გოლების სტატისტიკა</button>
+  <button class="tab-btn" onclick="showTab('results', this)">📋 შედეგების ცხრილი</button>
 </div>
 
 <!-- GROUPS TAB -->
@@ -789,12 +874,12 @@
     <div class="collapsible-body">
       <div class="match-row group-b">
         <span class="match-time blue">21:30</span>
-        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span></div>
+        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="score-badge blue">0 : 0</span><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span></div>
         <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
       <div class="match-row group-b">
         <span class="match-time blue">22:30</span>
-        <div class="match-vs"><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+        <div class="match-vs"><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span><span class="score-badge blue">5 : 1</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
         <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
     </div>
@@ -812,12 +897,12 @@
     <div class="collapsible-body">
       <div class="match-row">
         <span class="match-time">21:30</span>
-        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="score-badge">0 : 9</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
         <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
       <div class="match-row">
         <span class="match-time">22:30</span>
-        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
+        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="score-badge">3 : 11</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
         <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
     </div>
@@ -835,12 +920,12 @@
     <div class="collapsible-body">
       <div class="match-row group-b">
         <span class="match-time blue">21:30</span>
-        <div class="match-vs"><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+        <div class="match-vs"><span class="match-team">B2 Black Stone<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="score-badge blue">3 : 1</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
         <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
       <div class="match-row group-b">
         <span class="match-time blue">22:30</span>
-        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span></div>
+        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="score-badge blue">2 : 0</span><span class="match-team">B3 იმპულსი<span class="match-branch">(თბილისი მოლი)</span></span></div>
         <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
     </div>
@@ -858,12 +943,12 @@
     <div class="collapsible-body">
       <div class="match-row">
         <span class="match-time">21:30</span>
-        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="score-badge">1 : 6</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
         <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
       <div class="match-row">
         <span class="match-time">22:30</span>
-        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
+        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="score-badge">1 : 8</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
         <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
     </div>
@@ -881,12 +966,12 @@
     <div class="collapsible-body">
       <div class="match-row">
         <span class="match-time">22:00</span>
-        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
+        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="score-badge">0 : 3</span><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span></div>
         <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
       <div class="match-row">
         <span class="match-time">23:00</span>
-        <div class="match-vs"><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+        <div class="match-vs"><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span><span class="score-badge">1 : 2</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
         <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
     </div>
@@ -1410,7 +1495,6 @@
         <div class="pc-row"><span class="pc-role sub">სათადარიგოები</span>
           <span class="pc-players">
             <span class="player-pill sub">ნუგზარ კვარაცხელია</span>
-            <span class="player-pill sub">გაბრიელ როგავა</span>
           </span>
         </div>
       </div>
@@ -1470,11 +1554,11 @@
           <tbody>
             <tr>
               <td><span class="team-badge">A5</span>&nbsp; OFA</td>
-              <td>3</td><td>3</td><td>0</td><td>0</td><td>17</td><td>3</td><td>14</td><td>9</td>
+              <td>3</td><td>3</td><td>0</td><td>0</td><td>17</td><td>2</td><td>15</td><td>9</td>
             </tr>
             <tr>
               <td><span class="team-badge">A4</span>&nbsp; Blue Lock</td>
-              <td>2</td><td>2</td><td>0</td><td>0</td><td>14</td><td>3</td><td>11</td><td>6</td>
+              <td>1</td><td>2</td><td>0</td><td>0</td><td>11</td><td>3</td><td>8</td><td>6</td>
             </tr>
             <tr>
               <td><span class="team-badge">A3</span>&nbsp; Phoenix</td>
@@ -1486,7 +1570,7 @@
             </tr>
             <tr>
               <td><span class="team-badge">A1</span>&nbsp; ონლაინი</td>
-              <td>3</td><td>0</td><td>0</td><td>3</td><td>1</td><td>20</td><td>-19</td><td>0</td>
+              <td>2</td><td>0</td><td>0</td><td>3</td><td>1</td><td>17</td><td>-16</td><td>0</td>
             </tr>
           </tbody>
         </table>
@@ -1827,12 +1911,364 @@
   </div>
 </div>
 
+
+<!-- RESULTS TAB -->
+<div id="tab-results" class="section">
+  <h2 class="section-title">📋 მატჩების სრული ცხრილი</h2>
+  <p style="font-size:13px; color:#666; margin-bottom:16px;">Excel-ის მიხედვით — ყველა მატჩი, ანგარიში და სტატუსი</p>
+
+  <!-- Filters -->
+  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+    <button onclick="filterResults('all')" id="rf-all" class="rf-btn">ყველა</button>
+    <button onclick="filterResults('east')" id="rf-east" class="rf-btn">🌅 აღმოსავლეთი</button>
+    <button onclick="filterResults('west')" id="rf-west" class="rf-btn">🌊 დასავლეთი</button>
+    <button onclick="filterResults('A')" id="rf-A" class="rf-btn">A ჯგუფი</button>
+    <button onclick="filterResults('B')" id="rf-B" class="rf-btn">B ჯგუფი</button>
+    <button onclick="filterResults('C')" id="rf-C" class="rf-btn">C ჯგუფი</button>
+    <button onclick="filterResults('done')" id="rf-done" class="rf-btn">✓ დასრულებული</button>
+    <button onclick="filterResults('pending')" id="rf-pending" class="rf-btn">⏳ მომლოდინე</button>
+  </div>
+
+  <!-- EAST section -->
+  <div class="rt-section" id="rt-east">
+    <div class="rt-section-header east">🌅 აღმოსავლეთი — ჯგუფები A &amp; B &amp; პლეი-ოფი</div>
+    <div class="players-table-wrap">
+      <table class="results-tbl">
+        <thead>
+          <tr>
+            <th class="rt-date">თარიღი</th>
+            <th class="rt-day">კვ. დღე</th>
+            <th class="rt-time">დაწყება</th>
+            <th class="rt-team">გუნდი 1</th>
+            <th class="rt-score">ანგ.</th>
+            <th class="rt-team">გუნდი 2</th>
+            <th class="rt-grp">ჯგ.</th>
+            <th class="rt-status">სტატუსი</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-east">
+          <tr data-group="B" data-region="east" data-status="done">
+            <td>16 ივნ</td><td>სამშ</td><td>21:30</td>
+            <td>B1 Midnight Hummer</td>
+            <td class="rt-sc"><span class="sc-done blue">0:0</span></td>
+            <td>B2 Black Stone</td>
+            <td><span class="team-badge blue">B</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="B" data-region="east" data-status="done">
+            <td>16 ივნ</td><td>სამშ</td><td>22:30</td>
+            <td>B3 იმპულსი</td>
+            <td class="rt-sc"><span class="sc-done blue">5:1</span></td>
+            <td>B4 QSANI</td>
+            <td><span class="team-badge blue">B</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="done">
+            <td>17 ივნ</td><td>ოთხშ</td><td>21:30</td>
+            <td>A1 ონლაინი</td>
+            <td class="rt-sc"><span class="sc-done">0:9</span></td>
+            <td>A5 OFA</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="done">
+            <td>17 ივნ</td><td>ოთხშ</td><td>22:30</td>
+            <td>A2 ბოლო სეზონი</td>
+            <td class="rt-sc"><span class="sc-done">3:11</span></td>
+            <td>A4 Blue Lock</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="B" data-region="east" data-status="done">
+            <td>18 ივნ</td><td>ხუთშ</td><td>21:30</td>
+            <td>B1 Midnight Hummer</td>
+            <td class="rt-sc"><span class="sc-done blue">2:0</span></td>
+            <td>B3 იმპულსი</td>
+            <td><span class="team-badge blue">B</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="B" data-region="east" data-status="done">
+            <td>18 ივნ</td><td>ხუთშ</td><td>22:30</td>
+            <td>B2 Black Stone</td>
+            <td class="rt-sc"><span class="sc-done blue">3:1</span></td>
+            <td>B4 QSANI</td>
+            <td><span class="team-badge blue">B</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="done">
+            <td>19 ივნ</td><td>პარ</td><td>21:30</td>
+            <td>A2 ბოლო სეზონი</td>
+            <td class="rt-sc"><span class="sc-done">1:6</span></td>
+            <td>A5 OFA</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="done">
+            <td>19 ივნ</td><td>პარ</td><td>22:30</td>
+            <td>A1 ონლაინი</td>
+            <td class="rt-sc"><span class="sc-done">1:8</span></td>
+            <td>A3 Phoenix</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="done">
+            <td>22 ივნ</td><td>ორშ</td><td>22:00</td>
+            <td>A1 ონლაინი</td>
+            <td class="rt-sc"><span class="sc-done">0:3</span></td>
+            <td>A4 Blue Lock</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-nogame">⚠ არ გამოც.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="done">
+            <td>22 ივნ</td><td>ორშ</td><td>23:00</td>
+            <td>A3 Phoenix</td>
+            <td class="rt-sc"><span class="sc-done">1:2</span></td>
+            <td>A5 OFA</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="pending">
+            <td>29 ივნ</td><td>ორშ</td><td>21:30</td>
+            <td>A2 ბოლო სეზონი</td>
+            <td class="rt-sc"><span class="sc-pending">VS</span></td>
+            <td>A3 Phoenix</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="pending">
+            <td>29 ივნ</td><td>ორშ</td><td>22:30</td>
+            <td>A4 Blue Lock</td>
+            <td class="rt-sc"><span class="sc-pending">VS</span></td>
+            <td>A5 OFA</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="pending">
+            <td>1 ივლ</td><td>ოთხ</td><td>21:30</td>
+            <td>A1 ონლაინი</td>
+            <td class="rt-sc"><span class="sc-pending">VS</span></td>
+            <td>A2 ბოლო სეზონი</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="B" data-region="east" data-status="pending">
+            <td>1 ივლ</td><td>ოთხ</td><td>22:30</td>
+            <td>B1 Midnight Hummer</td>
+            <td class="rt-sc"><span class="sc-pending blue">VS</span></td>
+            <td>B4 QSANI</td>
+            <td><span class="team-badge blue">B</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="A" data-region="east" data-status="pending">
+            <td>2 ივლ</td><td>ხუთ</td><td>21:30</td>
+            <td>A3 Phoenix</td>
+            <td class="rt-sc"><span class="sc-pending">VS</span></td>
+            <td>A4 Blue Lock</td>
+            <td><span class="team-badge">A</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="B" data-region="east" data-status="pending">
+            <td>2 ივლ</td><td>ხუთ</td><td>22:30</td>
+            <td>B2 Black Stone</td>
+            <td class="rt-sc"><span class="sc-pending blue">VS</span></td>
+            <td>B3 იმპულსი</td>
+            <td><span class="team-badge blue">B</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="AB" data-region="east" data-status="pending">
+            <td>6 ივლ</td><td>ორშ</td><td>21:30</td>
+            <td>Aჯგ. 1-ადგ.</td>
+            <td class="rt-sc"><span class="sc-pending gold">VS</span></td>
+            <td>Bჯგ. 2-ადგ.</td>
+            <td><span class="team-badge" style="background:#D97706;">A/B</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="AB" data-region="east" data-status="pending">
+            <td>6 ივლ</td><td>ორშ</td><td>22:30</td>
+            <td>Bჯგ. 1-ადგ.</td>
+            <td class="rt-sc"><span class="sc-pending gold">VS</span></td>
+            <td>Aჯგ. 2-ადგ.</td>
+            <td><span class="team-badge" style="background:#D97706;">A/B</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="AB" data-region="east" data-status="pending">
+            <td>8 ივლ</td><td>ოთხშ</td><td>22:30</td>
+            <td>ნახ/ფინ 1 გამ.</td>
+            <td class="rt-sc"><span class="sc-pending gold">VS</span></td>
+            <td>ნახ/ფინ 2 გამ.</td>
+            <td><span class="team-badge" style="background:#D97706;">A/B</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- WEST section -->
+  <div class="rt-section" id="rt-west" style="margin-top:24px;">
+    <div class="rt-section-header west">🌊 დასავლეთი — ჯგუფი C</div>
+    <div class="players-table-wrap">
+      <table class="results-tbl">
+        <thead>
+          <tr>
+            <th class="rt-date">თარიღი</th>
+            <th class="rt-day">კვ. დღე</th>
+            <th class="rt-time">დაწყება</th>
+            <th class="rt-team">გუნდი 1</th>
+            <th class="rt-score">ანგ.</th>
+            <th class="rt-team">გუნდი 2</th>
+            <th class="rt-grp">ჯგ.</th>
+            <th class="rt-status">სტატუსი</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-west">
+          <tr data-group="C" data-region="west" data-status="pending">
+            <td>30 ივნ</td><td>სამშ</td><td>22:30</td>
+            <td>C1 ზუმ. BMW შნიკები</td>
+            <td class="rt-sc"><span class="sc-pending teal">VS</span></td>
+            <td>C2 SHŌRI-DAN</td>
+            <td><span class="team-badge teal">C</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="C" data-region="west" data-status="pending">
+            <td>3 ივლ</td><td>პარ</td><td>22:30</td>
+            <td>C3 FC 404 Team</td>
+            <td class="rt-sc"><span class="sc-pending teal">VS</span></td>
+            <td>C4 ენერჯ. &quot;2032</td>
+            <td><span class="team-badge teal">C</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="C" data-region="west" data-status="pending">
+            <td>7 ივლ</td><td>სამშ</td><td>22:30</td>
+            <td>C1 ზუმ. BMW შნიკები</td>
+            <td class="rt-sc"><span class="sc-pending teal">VS</span></td>
+            <td>C4 ენერჯ. &quot;2032</td>
+            <td><span class="team-badge teal">C</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="C" data-region="west" data-status="pending">
+            <td>7 ივლ</td><td>სამშ</td><td>23:30</td>
+            <td>C2 SHŌRI-DAN</td>
+            <td class="rt-sc"><span class="sc-pending teal">VS</span></td>
+            <td>C3 FC 404 Team</td>
+            <td><span class="team-badge teal">C</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="C" data-region="west" data-status="pending">
+            <td>9 ივლ</td><td>ხუთ</td><td>22:30</td>
+            <td>C2 SHŌRI-DAN</td>
+            <td class="rt-sc"><span class="sc-pending teal">VS</span></td>
+            <td>C4 ენერჯ. &quot;2032</td>
+            <td><span class="team-badge teal">C</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+          <tr data-group="C" data-region="west" data-status="pending">
+            <td>9 ივლ</td><td>ხუთ</td><td>23:30</td>
+            <td>C1 ზუმ. BMW შნიკები</td>
+            <td class="rt-sc"><span class="sc-pending teal">VS</span></td>
+            <td>C3 FC 404 Team</td>
+            <td><span class="team-badge teal">C</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FINAL -->
+  <div class="rt-section" id="rt-final" style="margin-top:24px;">
+    <div class="rt-section-header final">🏆 ფინალი</div>
+    <div class="players-table-wrap">
+      <table class="results-tbl">
+        <thead>
+          <tr>
+            <th class="rt-date">თარიღი</th>
+            <th class="rt-day">კვ. დღე</th>
+            <th class="rt-time">დაწყება</th>
+            <th class="rt-team">გუნდი 1</th>
+            <th class="rt-score">ანგ.</th>
+            <th class="rt-team">გუნდი 2</th>
+            <th class="rt-grp">ჯგ.</th>
+            <th class="rt-status">სტატუსი</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-final">
+          <tr data-group="ABC" data-region="final" data-status="pending">
+            <td>13 ივლ</td><td>ორშ</td><td>22:30</td>
+            <td>აღმოსავლეთის გამ.</td>
+            <td class="rt-sc"><span class="sc-pending gold">VS</span></td>
+            <td>დასავლეთის გამ.</td>
+            <td><span class="team-badge" style="background:#D97706;">ფინ.</span></td>
+            <td><span class="status-pending">⏳ მომლ.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top:14px; font-size:11px; color:#888; padding:0 4px;">
+    სულ: 27 მატჩი &nbsp;•&nbsp; 10 დასრულებული &nbsp;•&nbsp; 17 მომლოდინე &nbsp;•&nbsp; წყარო: Excel (22.06.26)
+  </div>
+</div>
+
+
 <footer>
   <strong>2026 წლის ფეხბურთის შიდა ჩემპიონატი</strong><br>
   <span>ზუმერი &nbsp;•&nbsp; ივნისი – ივლისი 2026 &nbsp;•&nbsp; 13 გუნდი &nbsp;•&nbsp; 3 ჯგუფი</span>
 </footer>
 
 <script>
+
+function filterResults(type) {
+  document.querySelectorAll('.rf-btn').forEach(b => b.classList.remove('rf-active'));
+  const activeBtn = document.getElementById('rf-' + type);
+  if (activeBtn) activeBtn.classList.add('rf-active');
+
+  const eastSection = document.getElementById('rt-east');
+  const westSection = document.getElementById('rt-west');
+  const finalSection = document.getElementById('rt-final');
+
+  const showEast = ['all','east','A','B','done','pending'].includes(type);
+  const showWest = ['all','west','C','done','pending'].includes(type);
+  const showFinal = ['all','done','pending'].includes(type);
+
+  if (eastSection) eastSection.style.display = showEast ? '' : 'none';
+  if (westSection) westSection.style.display = showWest ? '' : 'none';
+  if (finalSection) finalSection.style.display = showFinal ? '' : 'none';
+
+  if (eastSection) {
+    eastSection.querySelectorAll('tbody tr').forEach(row => {
+      const g = row.dataset.group || '';
+      const s = row.dataset.status || '';
+      let show = false;
+      if (type === 'all' || type === 'east') show = true;
+      else if (type === 'A') show = g === 'A';
+      else if (type === 'B') show = g === 'B';
+      else if (type === 'done') show = s === 'done';
+      else if (type === 'pending') show = s === 'pending';
+      row.style.display = show ? '' : 'none';
+    });
+  }
+  if (westSection) {
+    westSection.querySelectorAll('tbody tr').forEach(row => {
+      const s = row.dataset.status || '';
+      let show = true;
+      if (type === 'done') show = s === 'done';
+      else if (type === 'pending') show = s === 'pending';
+      row.style.display = show ? '' : 'none';
+    });
+  }
+  if (finalSection) {
+    finalSection.querySelectorAll('tbody tr').forEach(row => {
+      const s = row.dataset.status || '';
+      let show = true;
+      if (type === 'done') show = s === 'done';
+      else if (type === 'pending') show = s === 'pending';
+      row.style.display = show ? '' : 'none';
+    });
+  }
+}
+
 function showTab(tab, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
