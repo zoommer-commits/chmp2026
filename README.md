@@ -1432,7 +1432,7 @@
       </div>
       <div class="pc-body">
         <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">გიორგი გოგიტიძე</span></div>
-        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ნიკა დიასამიძე</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">გიორგი ომარაშვილი</span></div>
         <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
           <span class="pc-players">
             <span class="player-pill">ლევანი კოჩალიძე</span>
