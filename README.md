@@ -1520,6 +1520,7 @@
           <span class="pc-players">
             <span class="player-pill sub">საბა შენგელია</span>
             <span class="player-pill sub">ზურაბი ფარცხალაძე</span>
+            <span class="player-pill sub">ლუკა მაღლაკელიძე</span>
           </span>
         </div>
       </div>
