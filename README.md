@@ -651,6 +651,7 @@
     text-align: center;
   }
   .sc-done.blue { background: var(--blue-dark); }
+  .sc-done.teal { background: #0891B2; }
   .sc-pending {
     display: inline-block;
     background: #e5e7eb; color: #6b7280;
@@ -982,18 +983,19 @@
       <span>29 ივნისი, 2026 &nbsp;—&nbsp; ორშაბათი</span>
       <div style="display:flex;align-items:center;gap:6px;">
         <div class="date-badge">A ჯგუფი</div>
+        <span class="past-badge">✓ ჩატარდა</span>
         <span class="collapse-icon">▼</span>
       </div>
     </div>
     <div class="collapsible-body">
       <div class="match-row">
         <span class="match-time">21:30</span>
-        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="vs-badge">VS</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
+        <div class="match-vs"><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span><span class="score-badge">2 : 1</span><span class="match-team">A3 Phoenix<span class="match-branch">(1 ზუმერი)</span></span></div>
         <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
       <div class="match-row">
         <span class="match-time">22:30</span>
-        <div class="match-vs"><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span><span class="vs-badge">VS</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
+        <div class="match-vs"><span class="match-team">A4 Blue Lock<span class="match-branch">(ისთ ფოინთი)</span></span><span class="score-badge">2 : 1</span><span class="match-team">A5 OFA<span class="match-branch">(ოფისი)</span></span></div>
         <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
       </div>
     </div>
@@ -1004,19 +1006,20 @@
       <span>1 ივლისი, 2026 &nbsp;—&nbsp; ოთხშაბათი</span>
       <div style="display:flex;align-items:center;gap:6px;">
         <div class="date-badge">A &amp; B</div>
+        <span class="past-badge">✓ ჩატარდა</span>
         <span class="collapse-icon">▼</span>
       </div>
     </div>
     <div class="collapsible-body">
       <div class="match-row">
         <span class="match-time">21:30</span>
-        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="vs-badge">VS</span><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span></div>
-        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span></div>
+        <div class="match-vs"><span class="match-team">A1 ონლაინი<span class="match-branch">(საბითუმო ოფისი)</span></span><span class="score-badge">0 : 3</span><span class="match-team">A2 ბოლო სეზონი<span class="match-branch">(გლდანი/ცენტრალი)</span></span></div>
+        <div class="match-meta"><span class="tag orange">A ჯგუფი</span><span class="tag">თბილისი</span><span class="tag" style="background:#FFECE0;color:var(--orange-dark);">⚠ არ გამოცხადდნენ</span></div>
       </div>
       <div class="match-row group-b">
         <span class="match-time blue">22:30</span>
-        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="vs-badge blue">VS</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
-        <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span></div>
+        <div class="match-vs"><span class="match-team">B1 Midnight Hummer<span class="match-branch">(სითი მოლი)</span></span><span class="score-badge blue">3 : 0</span><span class="match-team">B4 QSANI<span class="match-branch">(საბითუმო ქსანი)</span></span></div>
+        <div class="match-meta"><span class="tag blue">B ჯგუფი</span><span class="tag">თბილისი</span><span class="tag" style="background:#FFECE0;color:var(--orange-dark);">⚠ არ გამოცხადდნენ</span></div>
       </div>
     </div>
   </div>
@@ -1050,13 +1053,14 @@
       <span>30 ივნისი, 2026 &nbsp;—&nbsp; სამშაბათი</span>
       <div style="display:flex;align-items:center;gap:6px;">
         <div class="date-badge">C ჯგუფი • ბათუმი</div>
+        <span class="past-badge">✓ ჩატარდა</span>
         <span class="collapse-icon">▼</span>
       </div>
     </div>
     <div class="collapsible-body">
       <div class="match-row group-c">
         <span class="match-time teal">22:30</span>
-        <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="vs-badge" style="background:#0891B2">VS</span><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span></div>
+        <div class="match-vs"><span class="match-team">C1 ზუმერელი BMW შნიკები<span class="match-branch">(ბათუმი გრანდ მოლი)</span></span><span class="score-badge" style="background:#0891B2">1 : 0</span><span class="match-team">C2 SHŌRI-DAN<span class="match-branch">(ბათუმი ჭავჭავაძე)</span></span></div>
         <div class="match-meta"><span class="tag teal">C ჯგუფი</span><span class="tag">ბათუმი</span></div>
       </div>
     </div>
@@ -1432,7 +1436,7 @@
       </div>
       <div class="pc-body">
         <div class="pc-row"><span class="pc-role cap">კაპ.</span><span class="pc-name">გიორგი გოგიტიძე</span></div>
-        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">გიორგი ომარაშვილი</span></div>
+        <div class="pc-row"><span class="pc-role gk">მეკ.</span><span class="pc-name">ნიკა დიასამიძე</span></div>
         <div class="pc-row"><span class="pc-role pl">მოთამაშეები</span>
           <span class="pc-players">
             <span class="player-pill">ლევანი კოჩალიძე</span>
@@ -1520,7 +1524,6 @@
           <span class="pc-players">
             <span class="player-pill sub">საბა შენგელია</span>
             <span class="player-pill sub">ზურაბი ფარცხალაძე</span>
-            <span class="player-pill sub">ლუკა მაღლაკელიძე</span>
           </span>
         </div>
       </div>
@@ -1554,24 +1557,24 @@
           </thead>
           <tbody>
             <tr>
-              <td><span class="team-badge">A5</span>&nbsp; OFA</td>
-              <td>3</td><td>3</td><td>0</td><td>0</td><td>17</td><td>2</td><td>15</td><td>9</td>
+              <td><span class="team-badge">A4</span>&nbsp; Blue Lock</td>
+              <td>3</td><td>3</td><td>0</td><td>0</td><td>16</td><td>4</td><td>12</td><td>9</td>
             </tr>
             <tr>
-              <td><span class="team-badge">A4</span>&nbsp; Blue Lock</td>
-              <td>1</td><td>2</td><td>0</td><td>0</td><td>11</td><td>3</td><td>8</td><td>6</td>
+              <td><span class="team-badge">A5</span>&nbsp; OFA</td>
+              <td>4</td><td>3</td><td>0</td><td>1</td><td>18</td><td>5</td><td>13</td><td>9</td>
             </tr>
             <tr>
               <td><span class="team-badge">A3</span>&nbsp; Phoenix</td>
-              <td>2</td><td>1</td><td>0</td><td>1</td><td>9</td><td>3</td><td>6</td><td>3</td>
+              <td>3</td><td>1</td><td>0</td><td>2</td><td>10</td><td>5</td><td>5</td><td>3</td>
             </tr>
             <tr>
               <td><span class="team-badge">A2</span>&nbsp; ბოლო სეზონი</td>
-              <td>2</td><td>0</td><td>0</td><td>2</td><td>4</td><td>17</td><td>-13</td><td>0</td>
+              <td>4</td><td>2</td><td>0</td><td>2</td><td>9</td><td>18</td><td>-9</td><td>6</td>
             </tr>
             <tr>
               <td><span class="team-badge">A1</span>&nbsp; ონლაინი</td>
-              <td>2</td><td>0</td><td>0</td><td>3</td><td>1</td><td>17</td><td>-16</td><td>0</td>
+              <td>4</td><td>0</td><td>0</td><td>4</td><td>1</td><td>23</td><td>-22</td><td>0</td>
             </tr>
           </tbody>
         </table>
@@ -1598,7 +1601,7 @@
           <tbody>
             <tr>
               <td><span class="team-badge blue">B1</span>&nbsp; Midnight Hummer</td>
-              <td>2</td><td>1</td><td>1</td><td>0</td><td>2</td><td>0</td><td>2</td><td>4</td>
+              <td>3</td><td>2</td><td>1</td><td>0</td><td>5</td><td>0</td><td>5</td><td>7</td>
             </tr>
             <tr>
               <td><span class="team-badge blue">B2</span>&nbsp; Black Stone</td>
@@ -1610,7 +1613,7 @@
             </tr>
             <tr>
               <td><span class="team-badge blue">B4</span>&nbsp; QSANI</td>
-              <td>2</td><td>0</td><td>0</td><td>2</td><td>2</td><td>8</td><td>-6</td><td>0</td>
+              <td>3</td><td>0</td><td>0</td><td>3</td><td>2</td><td>11</td><td>-9</td><td>0</td>
             </tr>
           </tbody>
         </table>
@@ -1637,11 +1640,11 @@
           <tbody>
             <tr>
               <td><span class="team-badge teal">C1</span>&nbsp; ზუმერელი BMW შნიკები</td>
-              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+              <td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>3</td>
             </tr>
             <tr>
               <td><span class="team-badge teal">C2</span>&nbsp; SHŌRI-DAN</td>
-              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+              <td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>-1</td><td>0</td>
             </tr>
             <tr>
               <td><span class="team-badge teal">C3</span>&nbsp; FC 404 Team</td>
@@ -1796,6 +1799,53 @@
     </div>
   </div>
 
+  <!-- 29 ივნისი -->
+  <div class="scorer-date-section" data-date="2026-06-29">
+    <div class="scorer-date-header" onclick="toggleGroup(this)">
+      <span>📅 29 ივნისი, 2026 — A ჯგუფი (ბოლო სეზონი vs Phoenix &amp; Blue Lock vs OFA)</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="players-table-wrap">
+        <table>
+          <thead><tr><th>გოლის ავტორი</th><th style="text-align:center;">გატ. გოლი</th><th>გუნდი</th><th>ფილიალი / დეპარტამენტი</th></tr></thead>
+          <tbody>
+            <tr><td>საბა გვიჩიანი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">ბოლო სეზონი</span></td><td>გლდანი/ ცენტრალი</td></tr>
+            <tr><td>ლაშა სეფაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">ბოლო სეზონი</span></td><td>გლდანი/ ცენტრალი</td></tr>
+            <tr><td>ნიკოლოზ პირმისაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">Phoenix</span></td><td>1 ზუმერი</td></tr>
+            <tr><td>გიორგი გაბროშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">OFA</span></td><td>ოფისი</td></tr>
+            <tr><td>ნიკოლოზ მინდაძე</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">Blue Lock</span></td><td>ისთ ფოინთი</td></tr>
+            <tr><td>გიორგი ჩიტუაშვილი</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge">Blue Lock</span></td><td>ისთ ფოინთი</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30 ივნისი -->
+  <div class="scorer-date-section" data-date="2026-06-30">
+    <div class="scorer-date-header" onclick="toggleGroup(this)">
+      <span>📅 30 ივნისი, 2026 — C ჯგუფი (ზუმერელი BMW შნიკები vs SHŌRI-DAN)</span>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="past-badge">✓ ჩატარდა</span>
+        <span class="collapse-icon">▼</span>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <div class="players-table-wrap">
+        <table>
+          <thead><tr><th>გოლის ავტორი</th><th style="text-align:center;">გატ. გოლი</th><th>გუნდი</th><th>ფილიალი / დეპარტამენტი</th></tr></thead>
+          <tbody>
+            <tr><td>ლევანი კოჩალიძე</td><td class="goal-count-cell"><span class="goal-count">1</span></td><td><span class="team-badge teal">ზუმერელი BMW შნიკები</span></td><td>ბათუმი გრანდ მოლი</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <h2 class="section-title" style="margin-top:32px;">📦 ჯამური გოლები თანამშრომლების მიხედვით</h2>
 
   <div class="players-table-wrap">
@@ -1812,15 +1862,27 @@
           <td class="goal-count-cell"><span class="goal-count">6</span></td>
         </tr>
         <tr>
-          <td>დემეტრე გრიგოლია</td>
-          <td class="goal-count-cell"><span class="goal-count">5</span></td>
-        </tr>
-        <tr>
           <td>გიორგი კიკნაძე</td>
           <td class="goal-count-cell"><span class="goal-count">5</span></td>
         </tr>
         <tr>
+          <td>დემეტრე გრიგოლია</td>
+          <td class="goal-count-cell"><span class="goal-count">5</span></td>
+        </tr>
+        <tr>
           <td>ნიკოლოზ მინდაძე</td>
+          <td class="goal-count-cell"><span class="goal-count">4</span></td>
+        </tr>
+        <tr>
+          <td>გიორგი გაბროშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">3</span></td>
+        </tr>
+        <tr>
+          <td>ლაშა სეფაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">3</span></td>
+        </tr>
+        <tr>
+          <td>გიორგი ჩიტუაშვილი</td>
           <td class="goal-count-cell"><span class="goal-count">3</span></td>
         </tr>
         <tr>
@@ -1828,31 +1890,15 @@
           <td class="goal-count-cell"><span class="goal-count">3</span></td>
         </tr>
         <tr>
+          <td>თენგო დევაძე</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
           <td>ლუკა აბრამაშვილი</td>
           <td class="goal-count-cell"><span class="goal-count">2</span></td>
         </tr>
         <tr>
           <td>ლუკა მჭედლიშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-        </tr>
-        <tr>
-          <td>გიორგი ჩიტუაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-        </tr>
-        <tr>
-          <td>ლაშა სეფაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-        </tr>
-        <tr>
-          <td>ომარი ომიაძე</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-        </tr>
-        <tr>
-          <td>გიორგი გაბროშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">2</span></td>
-        </tr>
-        <tr>
-          <td>გიორგი ირემაშვილი</td>
           <td class="goal-count-cell"><span class="goal-count">2</span></td>
         </tr>
         <tr>
@@ -1864,11 +1910,19 @@
           <td class="goal-count-cell"><span class="goal-count">2</span></td>
         </tr>
         <tr>
+          <td>გიორგი ირემაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
           <td>მათე დიდია</td>
           <td class="goal-count-cell"><span class="goal-count">2</span></td>
         </tr>
         <tr>
-          <td>თენგო დევაძე</td>
+          <td>ომარი ომიაძე</td>
+          <td class="goal-count-cell"><span class="goal-count">2</span></td>
+        </tr>
+        <tr>
+          <td>საბა გვიჩიანი</td>
           <td class="goal-count-cell"><span class="goal-count">2</span></td>
         </tr>
         <tr>
@@ -1884,15 +1938,11 @@
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
         <tr>
-          <td>საბა გვიჩიანი</td>
+          <td>ლუკა ბარდაველიძე</td>
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
         <tr>
           <td>ავთო ომსარაშვილი</td>
-          <td class="goal-count-cell"><span class="goal-count">1</span></td>
-        </tr>
-        <tr>
-          <td>ლუკა ბარდაველიძე</td>
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
         <tr>
@@ -1905,6 +1955,14 @@
         </tr>
         <tr>
           <td>ბექა აზარაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">1</span></td>
+        </tr>
+        <tr>
+          <td>ნიკოლოზ პირმისაშვილი</td>
+          <td class="goal-count-cell"><span class="goal-count">1</span></td>
+        </tr>
+        <tr>
+          <td>ლევანი კოჩალიძე</td>
           <td class="goal-count-cell"><span class="goal-count">1</span></td>
         </tr>
       </tbody>
@@ -2028,37 +2086,37 @@
             <td><span class="team-badge">A</span></td>
             <td><span class="status-done">✓ დასრ.</span></td>
           </tr>
-          <tr data-group="A" data-region="east" data-status="pending">
+          <tr data-group="A" data-region="east" data-status="done">
             <td>29 ივნ</td><td>ორშ</td><td>21:30</td>
             <td>A2 ბოლო სეზონი</td>
-            <td class="rt-sc"><span class="sc-pending">VS</span></td>
+            <td class="rt-sc"><span class="sc-done">2:1</span></td>
             <td>A3 Phoenix</td>
             <td><span class="team-badge">A</span></td>
-            <td><span class="status-pending">⏳ მომლ.</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
           </tr>
-          <tr data-group="A" data-region="east" data-status="pending">
+          <tr data-group="A" data-region="east" data-status="done">
             <td>29 ივნ</td><td>ორშ</td><td>22:30</td>
             <td>A4 Blue Lock</td>
-            <td class="rt-sc"><span class="sc-pending">VS</span></td>
+            <td class="rt-sc"><span class="sc-done">2:1</span></td>
             <td>A5 OFA</td>
             <td><span class="team-badge">A</span></td>
-            <td><span class="status-pending">⏳ მომლ.</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
           </tr>
-          <tr data-group="A" data-region="east" data-status="pending">
+          <tr data-group="A" data-region="east" data-status="done">
             <td>1 ივლ</td><td>ოთხ</td><td>21:30</td>
             <td>A1 ონლაინი</td>
-            <td class="rt-sc"><span class="sc-pending">VS</span></td>
+            <td class="rt-sc"><span class="sc-done">0:3</span></td>
             <td>A2 ბოლო სეზონი</td>
             <td><span class="team-badge">A</span></td>
-            <td><span class="status-pending">⏳ მომლ.</span></td>
+            <td><span class="status-nogame">⚠ არ გამოც.</span></td>
           </tr>
-          <tr data-group="B" data-region="east" data-status="pending">
+          <tr data-group="B" data-region="east" data-status="done">
             <td>1 ივლ</td><td>ოთხ</td><td>22:30</td>
             <td>B1 Midnight Hummer</td>
-            <td class="rt-sc"><span class="sc-pending blue">VS</span></td>
+            <td class="rt-sc"><span class="sc-done blue">3:0</span></td>
             <td>B4 QSANI</td>
             <td><span class="team-badge blue">B</span></td>
-            <td><span class="status-pending">⏳ მომლ.</span></td>
+            <td><span class="status-nogame">⚠ არ გამოც.</span></td>
           </tr>
           <tr data-group="A" data-region="east" data-status="pending">
             <td>2 ივლ</td><td>ხუთ</td><td>21:30</td>
@@ -2123,13 +2181,13 @@
           </tr>
         </thead>
         <tbody id="tbody-west">
-          <tr data-group="C" data-region="west" data-status="pending">
+          <tr data-group="C" data-region="west" data-status="done">
             <td>30 ივნ</td><td>სამშ</td><td>22:30</td>
             <td>C1 ზუმ. BMW შნიკები</td>
-            <td class="rt-sc"><span class="sc-pending teal">VS</span></td>
+            <td class="rt-sc"><span class="sc-done teal">1:0</span></td>
             <td>C2 SHŌRI-DAN</td>
             <td><span class="team-badge teal">C</span></td>
-            <td><span class="status-pending">⏳ მომლ.</span></td>
+            <td><span class="status-done">✓ დასრ.</span></td>
           </tr>
           <tr data-group="C" data-region="west" data-status="pending">
             <td>3 ივლ</td><td>პარ</td><td>22:30</td>
@@ -2208,7 +2266,7 @@
   </div>
 
   <div style="margin-top:14px; font-size:11px; color:#888; padding:0 4px;">
-    სულ: 27 მატჩი &nbsp;•&nbsp; 10 დასრულებული &nbsp;•&nbsp; 17 მომლოდინე &nbsp;•&nbsp; წყარო: Excel (22.06.26)
+    სულ: 26 მატჩი &nbsp;•&nbsp; 15 დასრულებული &nbsp;•&nbsp; 11 მომლოდინე &nbsp;•&nbsp; წყარო: Excel (01.07.26)
   </div>
 </div>
 
